@@ -1,16 +1,17 @@
 <template>
     <Banner />
-    <NavBar />
+    <Hero />
 </template>
 
 <script>
   import Banner from '../components/Banner.vue'
-  import NavBar from '../components/NavBar.vue'
+  import Hero from '../components/Hero.vue'
+
 
   export default {
     components: {
       Banner,
-      NavBar
+      Hero,
     }
   }
 </script>
