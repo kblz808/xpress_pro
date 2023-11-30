@@ -16,7 +16,7 @@
 
 <style scoped>
     .main {
-        background-color: black;
+        background-color: transparent;
         display: flex;
         justify-content: space-between;
         padding: 15px 120px;
