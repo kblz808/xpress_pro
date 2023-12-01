@@ -5,6 +5,7 @@ import Vuesax from 'vuesax-alpha'
 import App from './App.vue'
 import Home from './pages/Home.vue'
 import Journey from './pages/Journey.vue'
+import Sight from './pages/Sight.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 
