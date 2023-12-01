@@ -2,6 +2,7 @@
     <Banner />
     <Hero />
     <Fleet />
+    <Info />
     <Feature />
 </template>
 
@@ -10,6 +11,7 @@
   import Fleet from '../components/Fleet.vue'
   import Hero from '../components/Hero.vue'
   import Feature from '../components/Features.vue'
+  import Info from '../components/Info.vue'
 
   export default {
     components: {
@@ -17,6 +19,7 @@
       Fleet,
       Hero,
       Feature,
+      Info,
     }
   }
 </script>
