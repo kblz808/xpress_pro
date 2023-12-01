@@ -10,7 +10,7 @@
     <div class="price">price per hour: {{sight.price_per_hour}}</div>
   </div>
 
-  <vs-button color="success">Select</vs-button>
+  <vs-button type="border" @click="" color="success">Select</vs-button>
 </div>
 </template>
 
@@ -61,5 +61,10 @@ img {
 <script>
 export default {
   props: ['sight'],
+  methods: {
+    emitClicked(){
+      this.$emit('card-clicked');
+    }
+  }
 }
 </script>

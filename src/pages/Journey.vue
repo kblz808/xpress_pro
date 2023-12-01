@@ -36,30 +36,30 @@
         <div class="forms">
           <div>
             Pick Up Location
-            <vs-input input-style="border" placeholder="Enter your pickup location" />
+            <vs-input v-model="pickup_location" input-style="border" placeholder="Enter your pickup location" />
           </div>
 
           <div>
             Drop Off Location
-            <vs-input input-style="border" placeholder="Enter your pickup location" />
+            <vs-input v-model="dropoff_location" input-style="border" placeholder="Enter your dropoff location" />
           </div>
         </div>
       
         <div class="forms">
           <div>
             Pick Up Date & Time
-            <vs-input input-style="border" placeholder="Enter your pickup location" />
+            <vs-input v-model="pickup_date" type="date"  />
           </div>
 
           <div>
-            Pick Up Date & Time
-            <vs-input input-style="border" placeholder="Enter your pickup location" />
+            Return Date & Time
+            <vs-input v-model="return_date" type="date"  />
           </div>
         </div>
       </div>
     </div>
 
-    <vs-button color="success">Rent Now</vs-button>
+    <vs-button color="success"><router-link to="/sight">Rent Now</router-link></vs-button>
   </div>
 </div>
 </template>
@@ -151,6 +151,14 @@ export default {
   components: {
     NavBar,
     Banner,
+  },
+  data() {
+    return {
+      pickup_location: "",
+      dropoff_location: "",
+      pickup_date: "",
+      return_date: "",
+    }
   }
 }
 </script>

@@ -4,9 +4,8 @@
 
 <div class="container">
   <template v-for="sight in sights">
-    <SightCard :sight=sight />
+    <SightCard :sight=sight @card-clicked="handleCardClicked(card.id)" />
   </template>
-  
 </div>
 </template>
 
@@ -49,6 +48,11 @@ export default {
       .catch(err => {
         console.error(err);
       })
+  },
+  methods: {
+    handleCardClicked(cardID){
+      
+    }
   }
 }
 </script>
