@@ -5,6 +5,7 @@
     <Info />
     <Feature />
     <Feedback />
+    <News />
 </template>
 
 <script>
@@ -13,6 +14,7 @@
   import Hero from '../components/Hero.vue'
   import Feature from '../components/Features.vue'
   import Info from '../components/Info.vue'
+  import News from '../components/News.vue'
   import Feedback from '../components/Feedback.vue'
 
   export default {
@@ -22,6 +24,7 @@
       Hero,
       Feature,
       Info,
+      News,
       Feedback,
     }
   }
