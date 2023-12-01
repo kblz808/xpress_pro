@@ -6,6 +6,7 @@
     <Feature />
     <Feedback />
     <News />
+    <Footer />
 </template>
 
 <script>
@@ -16,6 +17,7 @@
   import Info from '../components/Info.vue'
   import News from '../components/News.vue'
   import Feedback from '../components/Feedback.vue'
+  import Footer from '../components/Footer.vue'
 
   export default {
     components: {
@@ -26,6 +28,7 @@
       Info,
       News,
       Feedback,
+      Footer,
     }
   }
 </script>
