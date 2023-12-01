@@ -4,6 +4,7 @@
     <Fleet />
     <Info />
     <Feature />
+    <Feedback />
 </template>
 
 <script>
@@ -12,6 +13,7 @@
   import Hero from '../components/Hero.vue'
   import Feature from '../components/Features.vue'
   import Info from '../components/Info.vue'
+  import Feedback from '../components/Feedback.vue'
 
   export default {
     components: {
@@ -20,6 +22,7 @@
       Hero,
       Feature,
       Info,
+      Feedback,
     }
   }
 </script>

@@ -50,7 +50,6 @@
     .container {
         height: 700px;
         background-color: #121212;
-        padding-top: 40px;
     }
     .text {
     color: white;
@@ -64,6 +63,9 @@
     word-wrap: break-word;
     text-align: center;
     color: lightgray;
+  }
+  .text{
+    padding-top: 40px;
   }
 
   .text h1 {
