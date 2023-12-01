@@ -1,7 +1,7 @@
 export const carData = [
   {
     name: "Jeep Renegade",
-    img: "@/assets/bmw-m5.png",
+    img: '/images/jeep-renegade.png',
     like: 74,
     seats: 5,
     luggage: 2,
@@ -12,6 +12,7 @@ export const carData = [
   },
   {
     name: "BMW M2",
+    img: '/images/bmw-m5.png',
     like: 36,
     seats: 5,
     luggage: 2,
@@ -22,6 +23,7 @@ export const carData = [
   },
   {
     name: "Ferarri Enzo",
+    img: '/images/ferrari-enzo.png',
     like: 85,
     seats: 2,
     luggage: 1,
@@ -32,6 +34,7 @@ export const carData = [
   },
   {
     name: "Ford Raptor",
+    img: '/images/ford-raptor.png',
     like: 59,
     seats: 5,
     luggage: 2,
@@ -42,6 +45,7 @@ export const carData = [
   },
   {
     name: "Mini Cooper",
+    img: "/images/mini-cooper.png",
     like: 74,
     seats: 19,
     luggage: 2,
@@ -52,6 +56,7 @@ export const carData = [
   },
   {
     name: "VW Polo",
+    img: '/images/vw-polo.png',
     like: 79,
     seats: 5,
     luggage: 2,

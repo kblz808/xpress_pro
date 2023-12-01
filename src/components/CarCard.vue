@@ -7,7 +7,7 @@
 <template>
   <div class="card">
     <div class="image_container">
-      <img :src="car.img" />
+      <img :src="car.img"/>
     </div>
 
     <div class="info">
@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  flex-shrink: 0;
 }
 
 .image_container {

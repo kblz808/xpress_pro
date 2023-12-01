@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-    <template v-for="car in cars">
-        <CarCard :car=car />
-    </template>
+    <vs-scrollbar height="400px">
+      <div class="scroll_container">
+        <template v-for="car in cars">
+            <CarCard :car=car />
+        </template>
+      </div>
+    </vs-scrollbar>
   </div>
 </template>
 
@@ -10,11 +14,14 @@
   .container {
     padding: 32px;
     background: #121212;
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    white-space: nowrap;
     width: 100%;
+    display: flex;
+  }
+
+  .scroll_container {
+    width: 100%;
+    display: flex;
+    gap: 24px;
   }
 
 </style>
