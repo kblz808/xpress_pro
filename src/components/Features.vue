@@ -96,11 +96,11 @@
   }
   
   img{
-    height: 350px;
+    height: 300px;
   }
 
   .features-container{
-    padding: 45px 200px;
+    padding: 90px 200px;
     display: flex;
     justify-content: space-around;
   }
