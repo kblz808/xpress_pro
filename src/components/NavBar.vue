@@ -1,6 +1,7 @@
 <template>
     <div class="main">
-        <img src="../assets/logo.png" alt="">        
+        <!-- <img src="../assets/logo.png" alt="">  -->
+        <h1>XpressPro</h1>       
             <nav>
                 <ul href="#">Home</ul>
                 <ul href="#">Cars</ul>
@@ -30,5 +31,10 @@
      nav ul {
         color: white;
         cursor: pointer;
+    }
+    h1{
+        font-size: xxx-large;
+        font-weight: 900;
+        color: white;
     }
 </style>
