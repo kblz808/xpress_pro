@@ -4,6 +4,10 @@ import Vuesax from 'vuesax-alpha'
 
 import App from './App.vue'
 import Home from './pages/Home.vue'
+import Journey from './pages/Journey.vue'
+import Sight from './pages/Sight.vue'
+import Cars from './pages/Cars.vue'
+import AdditionalService from './pages/AdditionalService.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 
@@ -11,6 +15,10 @@ import './index.css'
 
 const routes = [
   {path: '/', component: Home},
+  {path: '/journey', component: Journey},
+  {path: '/sight', component: Sight},
+  {path: '/cars', component: Cars},
+  {path: '/additional', component: AdditionalService}
 ]
 
 const router = createRouter({
