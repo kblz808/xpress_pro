@@ -1,6 +1,12 @@
 <script>
   export default {
-    props: ['car']
+    props: ['car', 'selected'],
+    methods: {
+      carSelected(){
+        console.log(this.car.id);
+        this.$emit('selected', this.car.id);
+      }
+    }
   }
 </script>
 
@@ -31,7 +37,7 @@
           <h2>${{car.price_per_day}}</h2>
         </div>
 
-        <vs-button color="success">Rent Now</vs-button>
+        <vs-button @click="carSelected" type="flat" :active="selected == car.id">Rent Now</vs-button>
       </div>
     </div>
   </div>

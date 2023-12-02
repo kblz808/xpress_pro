@@ -4,7 +4,7 @@
 
 <div class="container">
   <template v-for="sight in sights">
-    <SightCard :sight=sight @card-clicked="handleCardClicked(card.id)" />
+    <SightCard :sight=sight @card-clicked="handleCardClicked" />
   </template>
 </div>
 </template>
@@ -37,6 +37,7 @@ export default {
   data() {
     return {
       sights: [],
+      selectedSights: [],
     }
   },
 
@@ -50,8 +51,15 @@ export default {
       })
   },
   methods: {
-    handleCardClicked(cardID){
-      
+    handleCardClicked(sight, value) {
+      if(value) {
+        this.selectedSights.push(sight);
+      } else {
+        this.selectedSights = this.selectedSights.filter(s => sight.id != s.id);
+      }
+      console.log(this.selectedSights);
+      // const sight = this.sights.find(s => s.id === sightId);
+      // console.log(sightId, value);
     }
   }
 }

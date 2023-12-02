@@ -21,6 +21,8 @@
     <div class="sight">
       <template>
         <SightTime />
+        <SightTime />
+        <SightTime />
       </template>
     </div>
   </div>

@@ -10,7 +10,7 @@
     <div class="price">price per hour: {{sight.price_per_hour}}</div>
   </div>
 
-  <vs-button type="border" @click="" color="success">Select</vs-button>
+  <vs-button :active="clicked" type="border" @click="emitClicked(sight.id)" color="success">Select</vs-button>
 </div>
 </template>
 
@@ -63,7 +63,18 @@ export default {
   props: ['sight'],
   methods: {
     emitClicked(){
-      this.$emit('card-clicked');
+      if(this.clicked) {
+        this.$emit('card-clicked', this.sight, false);
+        this.clicked = false;
+      } else {
+        this.$emit('card-clicked', this.sight, true);
+        this.clicked = true;
+      }
+    },
+  },
+  data(){
+    return {
+      clicked: false,
     }
   }
 }

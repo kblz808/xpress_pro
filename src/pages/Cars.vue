@@ -4,7 +4,7 @@
 
 <div class="container">
   <template v-for="car in cars">
-    <ApiCarCard :car=car />
+    <ApiCarCard :car=car @selected="selectCar" />
   </template>
 </div>
 
@@ -38,6 +38,13 @@ export default {
   data() {
     return {
       cars: [],
+      selected: '',
+    }
+  },
+  methods: {
+    selectCar(carId){
+      console.log(carId);
+      this.selected = carId;
     }
   },
   mounted(){

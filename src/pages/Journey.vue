@@ -10,22 +10,22 @@
       <div class="left">
         <h3>What is your vehicle type?</h3>
         <div class="car_types">
-          <div class="logo">
+          <div class="logo" :style="{'background': car_clicked == 'car' ? 'yellow' : 'green'}" @click="carClicked('car')">
             <img src="/images/car.png">
             Car
           </div>
 
-          <div class="logo">
+          <div class="logo" :style="{'background': car_clicked == 'van' ? 'yellow' : 'green'}" @click="carClicked('van')">
             <img src="/images/van.png">
             Van
           </div>
 
-          <div class="logo">
-            <img src="/images/van.png">
+          <div class="logo" :style="{'background': car_clicked == 'minibus' ? 'yellow' : 'green'}" @click="carClicked('minibus')">
+            <img src="/images/minibus.png">
             Minibus
           </div>
 
-          <div class="logo">
+          <div class="logo" :style="{'background': car_clicked == 'sports' ? 'yellow' : 'green'}" @click="carClicked('sports')">
             <img src="/images/sportscar.png">
             Prestige
           </div>
@@ -52,14 +52,13 @@
           </div>
 
           <div>
-            Return Date & Time
-            <vs-input v-model="return_date" type="date"  />
+            <vs-input v-model="time" type="time" label="Time" />
           </div>
         </div>
       </div>
     </div>
 
-    <vs-button color="success"><router-link to="/sight">Rent Now</router-link></vs-button>
+    <vs-button color="success" @click="rentClicked"><router-link to="/sight">Rent Now</router-link></vs-button>
   </div>
 </div>
 </template>
@@ -103,7 +102,6 @@ img {
 }
 
 .logo {
-  background: green;
   color: white;
   padding: 24px;
   border-radius: 10px;
@@ -112,6 +110,7 @@ img {
   align-items: center;
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .car_types {
@@ -154,11 +153,20 @@ export default {
   },
   data() {
     return {
+      car_clicked: '',
       pickup_location: "",
       dropoff_location: "",
       pickup_date: "",
-      return_date: "",
+      time: "",
     }
-  }
+  },
+  methods: {
+    carClicked(carName) {
+      this.car_clicked = carName;
+    },
+    rentClicked(){
+      this.$router.push('/sight');
+    }
+  },
 }
 </script>
