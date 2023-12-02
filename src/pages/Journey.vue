@@ -165,6 +165,15 @@ export default {
       this.car_clicked = carName;
     },
     rentClicked(){
+      const journey = {
+        car_pickeed: this.car_picked,
+        pickup_location: this.pickup_location,
+        droppof_location: this.dropoff_location,
+        pickup_date: this.pickup_date,
+        time: this.time,
+      };
+      localStorage.setItem("journey", JSON.stringify(journey));
+      
       this.$router.push('/sight');
     }
   },

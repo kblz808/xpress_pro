@@ -2,21 +2,36 @@
 <Banner/>
 <NavBar/>
 
-<div class="container">
-  <template v-for="sight in sights">
-    <SightCard :sight=sight @card-clicked="handleCardClicked" />
-  </template>
+
+<div class="outer">
+  <vs-button @click="handleNext">Next</vs-button>
+
+  <div class="container">  
+    <template v-for="sight in sights">
+      <SightCard :sight=sight @card-clicked="handleCardClicked" />
+    </template>
+  </div>
+
 </div>
 </template>
 
 <style scoped>
 .container {
   background: black;
-  padding: 120px;
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 60px 0;
+  align-items: start;
+}
+
+.outer {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  padding: 120px;
+  align-items: start;
 }
 </style>
 
@@ -57,9 +72,10 @@ export default {
       } else {
         this.selectedSights = this.selectedSights.filter(s => sight.id != s.id);
       }
-      console.log(this.selectedSights);
-      // const sight = this.sights.find(s => s.id === sightId);
-      // console.log(sightId, value);
+    },
+    handleNext(){
+      localStorage.setItem("sights", JSON.stringify(this.selectedSights));
+      this.$router.push('/cars');
     }
   }
 }

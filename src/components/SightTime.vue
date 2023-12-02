@@ -1,12 +1,10 @@
 <template>
 <div class="container">
-  <div class="name">Sight name</div>
-  <vs-select label="Label placeholder" label-float>
-    <vs-option label="Vuesax" value="0.30"> 30min </vs-option>
-    <vs-option label="Vuesax" value="1"> 1hr </vs-option>
-    <vs-option label="Vuesax" value="1.30"> 1hr 30min </vs-option>
-    <vs-option label="Vuesax" value="2"> 2hr </vs-option>
-    <vs-option label="Vuesax" value="2.30"> 2hr 30min </vs-option>
+  <div class="name">{{sight.location}}</div>
+  <vs-select v-model="value" label="Label placeholder" label-float>
+    <vs-option label="1hr" value="1"> 1hr </vs-option>
+    <vs-option label="2hr" value="2"> 2hr </vs-option>
+    <vs-option label="3hr" value="3"> 3hr </vs-option>
   </vs-select>
 </div>
 </template>
@@ -14,6 +12,11 @@
 <script>
 export default {
   props: ['sight'],
+  data() {
+    return {
+      value: "",
+    }
+  }
 }
 </script>
 
