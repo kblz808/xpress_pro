@@ -4,7 +4,7 @@
 
 <div class="container">
   <template v-for="car in cars">
-    <ApiCarCard :car=car @selected="selectCar" />
+    <ApiCarCard :car=car @selected="selectCar" ref="childRef" />
   </template>
 </div>
 
@@ -43,9 +43,12 @@ export default {
   },
   methods: {
     selectCar(carId){
-      console.log(carId);
       this.selected = carId;
-    }
+      console.log(this.selected);
+      for(const item of this.$refs.childRef){
+        item.childMethod(carId);
+      }
+    },
   },
   mounted(){
     axios.get('https://xpresspro-core.onrender.com/vehicles')

@@ -1,12 +1,26 @@
 <script>
   export default {
-    props: ['car', 'selected'],
+    props: ['car'],
+    expose: ['childMethod'],
+    data(){
+      return {
+        selected: false,
+      }
+    },
     methods: {
       carSelected(){
-        console.log(this.car.id);
         this.$emit('selected', this.car.id);
+      },
+      childMethod(carId){
+        if(!this.selected && (carId) == this.car.id) {
+          this.selected = true;
+        } else if (this.selected && (carId) != this.car.id) {
+          this.selected = false;
+        } else if (this.selected && (carId) == this.car.id) {
+          this.selected = false;
+        }
       }
-    }
+    },
   }
 </script>
 
@@ -37,7 +51,7 @@
           <h2>${{car.price_per_day}}</h2>
         </div>
 
-        <vs-button @click="carSelected" type="flat" :active="selected == car.id">Rent Now</vs-button>
+        <vs-button @click="carSelected" type="flat" :active="selected">Rent Now</vs-button>
       </div>
     </div>
   </div>
