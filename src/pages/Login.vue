@@ -6,6 +6,12 @@ export default {
   components: {
     Banner,
     NavBar,
+  },
+  data() {
+    return {
+      username: '',
+      password: '',
+    }
   }
 }
 </script>
@@ -19,19 +25,21 @@ export default {
   <div class="container">
     <h2>Login</h2>
 
-    <vs-input placeholder="username">
+    <vs-input placeholder="username" v-model="username">
       <template #icon>
         <i class="bx bx-user" />
       </template>
     </vs-input>
 
-    <vs-input placeholder="password" type="password">
+    <vs-input placeholder="password" type="password" v-model="password">
       <template #icon>
         <i class="bx bx-lock-open-alt" />
       </template>
     </vs-input>
 
     <vs-button>Sign In</vs-button>
+
+    <p>Dont have an account yet? <router-link to="/register"><span>Sign up</span> here</router-link></p>
   </div>
 
 </div>
@@ -59,6 +67,16 @@ export default {
 .container h2 {
   font-size: 18px;
   font-weight: 700;
+}
+
+.container p {
+  font-size: 14px;
+  color: #777777;
+}
+
+span {
+  color: blue;
+  font-weight: 600;
 }
 
 </style>

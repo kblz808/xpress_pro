@@ -11,9 +11,9 @@ export default {
 <template>
     <div class="main">
         <!-- <img src="../assets/logo.png" alt="">  -->
-        <h1>XpressPro</h1>       
+        <router-link to="/"><h1>XpressPro</h1></router-link>
             <nav>
-                <ul href="#">Home</ul>
+                <router-link to="/"><ul href="#">Home</ul></router-link>
                 <ul href="#">Cars</ul>
                 <router-link to="/journey"><ul href="#">Booking</ul></router-link>
                 <ul href="#">My Account</ul>
@@ -31,7 +31,6 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
     }
     nav{
         display: flex;
@@ -42,7 +41,7 @@ export default {
         cursor: pointer;
     }
     h1{
-        font-size: xxx-large;
+        font-size: 34px;
         font-weight: 900;
         color: white;
     }

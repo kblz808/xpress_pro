@@ -32,9 +32,12 @@
                 <div class="input-1">
                     <div>
                         <h6>Vehicle Type</h6>
-                        <vs-input v-model="value" input-style="border" placeholder="SUV" />   
+                        <br/>
+
+                        <vs-select placeholder="Vehicle Type" v-model="vehicle_type">
+                        </vs-select>
                     </div>
-                    <vs-button color="#1ECB15">Sign in</vs-button>                          
+                    <vs-button color="#1ECB15">Book Now</vs-button>                          
                 </div>
             </div>
 
@@ -92,9 +95,10 @@
     .hero {
         background-image: url('../assets/bg.jpg');
         height: 972px;
+        padding: 0 120px;
     }
     .info {
-        margin: 0px 120px;
+        padding: 60px 0px;
     }
     h1 {
         color: white;
@@ -107,7 +111,7 @@
     .form {
         color: white;
         background-color: #14141477;
-        margin: 80px 0px;
+        margin-top: 24px;
         padding: 24px;
         height: 233px;
         border-radius: 10px;
@@ -164,6 +168,11 @@ import NavBar from '../components/NavBar.vue'
 export default {
     components: {
         NavBar
+    },
+    data() {
+        return {
+            vehicle_type: '',
+        }
     }
 }
 </script>
