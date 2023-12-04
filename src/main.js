@@ -4,6 +4,7 @@ import Vuesax from 'vuesax-alpha'
 
 import App from './App.vue'
 import Home from './pages/Home.vue'
+import Dashboard from './pages/Dashboard.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 
@@ -11,6 +12,7 @@ import './index.css'
 
 const routes = [
   {path: '/', component: Home},
+  {path: '/dashboard', component: Dashboard},
 ]
 
 const router = createRouter({

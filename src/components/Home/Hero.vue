@@ -90,7 +90,7 @@
 
 <style scoped>
     .hero {
-        background-image: url('../assets/bg.jpg');
+        background-image: url('/images/bg.jpg');
         height: 972px;
     }
     .info {
@@ -159,7 +159,7 @@
 
 
 <script>
-import NavBar from '../components/NavBar.vue'
+import NavBar from '../NavBar.vue'
 
 export default {
     components: {

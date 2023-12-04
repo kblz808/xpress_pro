@@ -69,7 +69,7 @@
 
 <script>
   import CarCard from "./CarCard.vue"
-  import {carData} from "../data.js"
+  import {carData} from "../../data.js"
 
   export default {
     data() {
