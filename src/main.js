@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import {createRouter, createWebHashHistory} from 'vue-router'
 import Vuesax from 'vuesax-alpha'
 
+import { createPinia } from 'pinia'
+
 import App from './App.vue'
 import Home from './pages/Home.vue'
 import Journey from './pages/Journey.vue'
@@ -30,6 +32,9 @@ const router = createRouter({
 })
 
 const app = createApp(App)
+const pinia = createPinia()
+
+app.use(pinia)
 app.use(Vuesax)
 app.use(router)
 app.mount('#app')

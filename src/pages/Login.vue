@@ -2,17 +2,25 @@
 import NavBar from '../components/NavBar.vue'
 import Banner from '../components/Banner.vue'
 
+import {useUserStore} from '../store.js'
+
 export default {
-  components: {
-    Banner,
-    NavBar,
-  },
   data() {
     return {
       username: '',
       password: '',
+    };
+  },
+  components: {
+    Banner,
+    NavBar,
+  },
+  methods: {
+    handleSubmit(){
+      const userStore = useUserStore()
+      userStore.login({username: this.username,  password: this.password})
     }
-  }
+  },
 }
 </script>
 
@@ -37,7 +45,7 @@ export default {
       </template>
     </vs-input>
 
-    <vs-button>Sign In</vs-button>
+    <vs-button @click="handleSubmit">Sign In</vs-button>
 
     <p>Dont have an account yet? <router-link to="/register"><span>Sign up</span> here</router-link></p>
   </div>
