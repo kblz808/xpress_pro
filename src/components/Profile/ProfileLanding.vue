@@ -1,14 +1,12 @@
- <template>  
+<template>  
     <div class="container-upper">
         <NavBar />
-        <p>Dashboard</p>
+        <p>My Profile</p>
     </div>
     <div class="container-lower">
         <Profile />
         <div class="right">
-            <Records />
-            <Orders />
-            <Favorite />
+           <ProfileEdit />
         </div>
     </div>
     <Footer />
@@ -41,19 +39,17 @@
 <script>
     import NavBar from '../NavBar.vue'
     import Footer from '../Footer.vue'
-    import Orders from './Orders.vue'
     import Profile from '../Profile.vue'
-    import Records from './Records.vue'
-    import Favorite from './Favorite.vue'
+    import ProfileEdit from './ProfileEdit.vue'
+   
 
     export default {
         components: {
             NavBar,
             Footer,
-            Orders,
             Profile,
-            Records,
-            Favorite,
+            ProfileEdit
+           
         }
     }
 </script> 
