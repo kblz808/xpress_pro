@@ -14,7 +14,7 @@ export default {
         <router-link to="/"><h1>XpressPro</h1></router-link>
             <nav>
                 <router-link to="/"><ul href="#">Home</ul></router-link>
-                <ul href="#">Cars</ul>
+                <router-link to="/cars_filter"><ul href="#">Cars</ul></router-link>
                 <router-link to="/journey"><ul href="#">Booking</ul></router-link>
                 <ul href="#">My Account</ul>
                 <ul href="#">About Us <i class='bx bx-chevron-down'></i></ul>               
