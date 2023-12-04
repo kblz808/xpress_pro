@@ -17,8 +17,8 @@ export default {
   },
   methods: {
     handleSubmit(){
-      const userStore = useUserStore()
-      userStore.login({username: this.username,  password: this.password})
+      const userStore = useUserStore();
+      userStore.login({email: this.username,  password: this.password});
     }
   },
 }

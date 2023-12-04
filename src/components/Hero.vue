@@ -37,7 +37,7 @@
                         <vs-select placeholder="Vehicle Type" v-model="vehicle_type">
                         </vs-select>
                     </div>
-                    <vs-button color="#1ECB15">Book Now</vs-button>                          
+                    <vs-button color="#1ECB15" @click="handleBooking">Book Now</vs-button>                          
                 </div>
             </div>
 
@@ -172,6 +172,15 @@ export default {
     data() {
         return {
             vehicle_type: '',
+        }
+    },
+    methods: {
+        handleBooking()n {
+            if(localStorage.getItem('token')) {
+                this.$router.push('/additional');
+            } else {
+                this.$router.push('/login');
+            }
         }
     }
 }
