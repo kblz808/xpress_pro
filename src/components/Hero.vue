@@ -7,29 +7,22 @@
                 <div class="input-1">
                     <div>
                         <h6>Pick Up Location</h6>
-    
-                        <vs-input v-model="value" input-style="border" placeholder="Enter your pickup location" />
-                        
+
+                        <vs-input input-style="border" placeholder="Enter yout Pickup location" v-model="pickup_location"></vs-input>
                     </div>
                     <div>
                         <h6>Pick Up Date & Time</h6>
                         <div class="form_inside">
-                            <vs-input v-model="value7" type="date" label="Date" />
-                            <vs-input v-model="value6" type="time" label="time" />
+                            <vs-input v-model="pickup_date" type="date" label="Date" />
+                            <vs-input v-model="pickup_time" type="time" label="time" />
                         </div>   
                     </div>
                 </div>
                 <div class="input-1">
                     <div>
                         <h6>Drop Off Location</h6>    
-                        <vs-input v-model="value" input-style="border" placeholder="Enter your dropoff location" />    
+                        <vs-input v-model="dropoff_location" input-style="border" placeholder="Enter your dropoff location" />    
                     </div>
-                    <div>
-                        <h6>Additional Drop Off</h6>    
-                        <vs-input v-model="value" input-style="border" placeholder="Enter your additional dropoff location" />    
-                    </div>
-                </div>
-                <div class="input-1">
                     <div>
                         <h6>Vehicle Type</h6>
                         <br/>
@@ -37,6 +30,9 @@
                         <vs-select placeholder="Vehicle Type" v-model="vehicle_type">
                         </vs-select>
                     </div>
+
+                </div>
+                <div class="input-1">
                     <vs-button color="#1ECB15" @click="handleBooking">Book Now</vs-button>                          
                 </div>
             </div>
@@ -109,8 +105,7 @@
         color: #1ECB15;
     }
     .form {
-        color: white;
-        background-color: #14141477;
+        background: #ffffffee;
         margin-top: 24px;
         padding: 24px;
         height: 233px;
@@ -172,10 +167,14 @@ export default {
     data() {
         return {
             vehicle_type: '',
+            pickup_location: '',
+            dropoff_location: '',
+            pickup_time: '',
+            pickup_date: '',
         }
     },
     methods: {
-        handleBooking()n {
+        handleBooking() {
             if(localStorage.getItem('token')) {
                 this.$router.push('/additional');
             } else {
