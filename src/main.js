@@ -7,6 +7,7 @@ import Home from './pages/Home.vue'
 import Dashboard from './pages/Dashboard.vue'
 import Profile from './pages/Profile.vue'
 import MyOrders from './pages/MyOrders.vue'
+import MyFavorite from './pages/MyFavorite.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 
@@ -17,6 +18,7 @@ const routes = [
   {path: '/dashboard', component: Dashboard},
   {path: '/profile', component: Profile},
   {path: '/myorders', component: MyOrders},
+  {path: '/myfavorite', component: MyFavorite},
 ]
 
 const router = createRouter({
