@@ -67,6 +67,8 @@ export const carData = [
   },
 ];
 
+
+
 export const ordersData = [
   {
     id: 1245,
@@ -76,7 +78,7 @@ export const ordersData = [
     sightseeing: "Lagos",
     pickup_date: "10/10/2021",
     price: "244",
-    status: "Pending",
+    status: "Completed",
   },
   {
     id: 1245,
@@ -86,7 +88,7 @@ export const ordersData = [
     sightseeing: "Lagos",
     pickup_date: "10/10/2021",
     price: "244",
-    status: "Pending",
+    status: "Cancelled",
   },
   {
     id: 1245,
@@ -96,7 +98,7 @@ export const ordersData = [
     sightseeing: "Lagos",
     pickup_date: "10/10/2021",
     price: "244",
-    status: "Pending",
+    status: "Scheduled",
   },
   {
     id: 1245,
@@ -106,7 +108,7 @@ export const ordersData = [
     sightseeing: "Lagos",
     pickup_date: "10/10/2021",
     price: "244",
-    status: "Pending",
+    status: "Completed",
   },
   {
     id: 1245,
@@ -116,7 +118,7 @@ export const ordersData = [
     sightseeing: "Lagos",
     pickup_date: "10/10/2021",
     price: "244",
-    status: "Pending",
+    status: "Cancelled",
   },
   {
     id: 1245,
@@ -126,7 +128,7 @@ export const ordersData = [
     sightseeing: "Lagos",
     pickup_date: "10/10/2021",
     price: "244",
-    status: "Pending",
+    status: "Scheduled",
   },
   {
     id: 1245,
@@ -136,7 +138,7 @@ export const ordersData = [
     sightseeing: "Lagos",
     pickup_date: "10/10/2021",
     price: "244",
-    status: "Pending",
+    status: "Completed",
   },
   
 ];

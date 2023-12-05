@@ -103,6 +103,7 @@
     methods: {
       setActiveMenu(menu) {
         this.activeMenu = menu;
+        this.$emit('menu-click', menu);
       },
     },
   };

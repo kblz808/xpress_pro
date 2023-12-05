@@ -4,7 +4,8 @@
         <p>Dashboard</p>
     </div>
     <div class="container-lower">
-        <Profile />
+        <Profile @menu-click="handleMenuClick"/>
+        <router-view></router-view>
         <div class="right">
             <Records />
             <Orders />
@@ -54,6 +55,17 @@
             Profile,
             Records,
             Favorite,
+        },
+        data(){
+            return {
+                activeMenu: 'dashboard',
+            }
+        },
+        methods: {
+            handleMenuClick(menu) {
+                this.activeMenu = menu;
+            }
+
         }
     }
 </script> 
