@@ -3,7 +3,7 @@
     props: ['car'],
     methods: {
       carSelected() {
-        
+        this.$router.push({name: 'car', params: {id: this.car.id}});
       }
     }
   }

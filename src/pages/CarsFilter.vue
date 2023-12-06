@@ -186,6 +186,7 @@ export default {
   padding: 40px 120px;
   display: flex;
   justify-content: space-between;
+  align-items: start;
   gap: 2px;
 }
 
