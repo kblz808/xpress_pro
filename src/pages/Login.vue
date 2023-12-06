@@ -16,9 +16,11 @@ export default {
     NavBar,
   },
   methods: {
-    handleSubmit(){
+    async handleSubmit(){
       const userStore = useUserStore();
-      userStore.login({email: this.email,  password: this.password});
+      if(await userStore.login({email: this.email,  password: this.password})){
+        this.$router.push('/profile');
+      }
     }
   },
 }

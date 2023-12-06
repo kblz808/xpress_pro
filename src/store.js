@@ -15,23 +15,26 @@ export const useUserStore = defineStore({
     async login(credentials){
       try {
         const response = await axios.post('https://xpresspro-core.onrender.com/login', {user: credentials});
+
+        console.log(response);
         // console.log(response.token);
         const user = response.data.user;
         const token = response.data.token;
 
-        console.log( token);
+        this.setUser(user)
 
-        // console.log(token);
+        localStorage.setItem('token',  token)
 
-        // this.setUser(user)
+        axios.defaults.headers.common['Authorization'] = `
+          Bearer ${token}
+        `
+        console.log(localStorage.getItem('token'));
 
-        // localStorage.setItem('token',  token)
 
-        // axios.defaults.headers.common['Authorization'] = `
-          // Bearer ${token}
-        // `
+        return true;
       } catch (error) {
-        console.error(error)
+        console.error(error);
+        return false;
       }
     },
     async register(credentials){
