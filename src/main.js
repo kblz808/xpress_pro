@@ -7,6 +7,7 @@ import App from './App.vue'
 import Home from './pages/Home.vue'
 import Dashboard from './pages/Dashboard.vue'
 import Profile from './pages/Profile.vue'
+import MyOrders from './pages/MyOrders.vue'
 import Journey from './pages/Journey.vue'
 import Sight from './pages/Sight.vue'
 import Cars from './pages/Cars.vue'
@@ -22,6 +23,7 @@ const routes = [
   {path: '/', component: Home},
   {path: '/dashboard', component: Dashboard},
   {path: '/profile', component: Profile},
+  {path: '/myorders', component: MyOrders},
   {path: '/journey', component: Journey},
   {path: '/sight', component: Sight},
   {path: '/cars', component: Cars},

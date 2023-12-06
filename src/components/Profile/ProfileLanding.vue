@@ -5,6 +5,7 @@
     </div>
     <div class="container-lower">
         <Profile />
+        <router-view></router-view>
         <div class="right">
            <ProfileEdit />
         </div>
