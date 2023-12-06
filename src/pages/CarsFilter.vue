@@ -42,18 +42,32 @@
         <vs-checkbox-group v-model="car_seats">
           <vs-checkbox value="2"> 2 seats </vs-checkbox>
           <vs-checkbox value="4"> 4 seats </vs-checkbox>
-          <vs-checkbox value="6"> 6 seats </vs-checkbox>
+          <vs-checkbox value="5"> 5 seats </vs-checkbox>
         </vs-checkbox-group>
       </div>
+
+      <div class="filter luggage_capacity">
+        <h3>Luggage Capacity</h3>
+        <vs-checkbox-group v-model="luggage_capacity">
+          <vs-checkbox value="1"> 1 luggage </vs-checkbox>
+          <vs-checkbox value="2"> 2 luggage </vs-checkbox>
+          <vs-checkbox value="3"> 3 luggage </vs-checkbox>
+          <vs-checkbox value="4"> 4 luggage </vs-checkbox>
+        </vs-checkbox-group>
+      </div>
+
       
       <div class="filter price">
         <h3> Minimum Price </h3>
+
+        <vs-input v-model="min_price" input-style="border" placeholder="Min Price" />
+        <vs-input v-model="max_price" input-style="border" placeholder="Max Price" />
 
       </div>
     </div>
 
     <div class="cars">
-      <template v-for="car in cars">
+      <template v-for="car in filtered_cars">
         <FilterCarCard :car=car />
       </template>
     </div>
@@ -83,24 +97,57 @@ export default {
       vehicle_type: [],
       body_type: [],
       car_seats: [],
+      luggage_capacity: [],
+      min_price: null,
+      max_price: null,
     }
   },
   mounted() {
     axios.get('https://xpresspro-core.onrender.com/vehicles')
       .then(res => {
         this.cars = res.data.data;
+        this.filtered_cars = this.cars;
       })
       .catch(err => {
         console.error(err);
       })
   },
   watch: {
-    vehicle_type() {
-      console.log(this.vehicle_type);
-
-      // this.filtered_cars = this.cars.filter(car => {
-      //   console.log('car');
-      // });
+    car_seats() {
+      if(this.car_seats.length == 0){
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return this.car_seats.includes(car.person_capacity.toString());
+      })
+    },
+    luggage_capacity() {
+      if(this.luggage_capacity.length == 0) {
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return this.luggage_capacity.includes(car.luggage_capacity.toString());
+      })
+    },
+    min_price() {
+      if(!this.min_price){
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return car.price_per_day >= this.min_price;
+      })
+    },
+    max_price() {
+      if(!this.max_price){
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return car.price_per_day <= this.max_price;
+      })
     }
   }
 }
@@ -150,6 +197,11 @@ export default {
   border-radius: 10px;
   padding: 25px;
   width: 235px;
+  transition: border-color 0.5s ease;
+}
+
+.filter:hover {
+  border-color: green;
 }
 
 .filter h3 {
