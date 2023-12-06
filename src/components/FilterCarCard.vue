@@ -1,59 +1,48 @@
 <script>
   export default {
     props: ['car'],
-    expose: ['childMethod'],
-    data(){
-      return {
-        selected: false,
-      }
-    },
     methods: {
-      carSelected(){
-        this.$emit('selected', this.car.id);
-      },
-      childMethod(carId){
-        if(!this.selected && (carId) == this.car.id) {
-          this.selected = true;
-        } else if (this.selected && (carId) != this.car.id) {
-          this.selected = false;
-        } else if (this.selected && (carId) == this.car.id) {
-          this.selected = false;
-        }
+      carSelected() {
+        this.$router.push({name: 'car', params: {id: this.car.id}});
       }
-    },
+    }
   }
 </script>
 
 <template>
-  <div class="card">
-    <div class="image_container">
-      <img :src="car.frontview"/>
-    </div>
-
-    <div class="info">
-      <div class="upper">
-        <div class="name">
-          <div>{{car.vehicle_name}}</div>
-          <div><p>{{car.vehicle_model}}</p></div>
-        </div>
-
-        <div class="icons">
-          <div><i class='bx bxs-user'></i> {{car.person_capacity}}</div>
-          <div><i class='bx bxs-briefcase-alt-2' ></i> {{car.luggage_capacity}}</div>
-        </div>
+  <div>
+    <div class="card">
+      <div class="image_container">
+        <img :src="car.frontview"/>
       </div>
 
-      <hr/>
+      <div class="info">
+        <div class="upper">
+          <div class="name">
+            <div>{{car.vehicle_name}}</div>
+            <div><p>{{car.vehicle_model}}</p></div>
+          </div>
 
-      <div class="lower">
-        <div>
-          <p>Price per day</p>
-          <h2>${{car.price_per_day}}</h2>
+          <div class="icons">
+            <div><i class='bx bxs-user'></i> {{car.person_capacity}}</div>
+            <div><i class='bx bxs-briefcase-alt-2' ></i> {{car.luggage_capacity}}</div>
+          </div>
         </div>
 
-        <vs-button @click="carSelected" type="flat" :active="selected">Rent Now</vs-button>
+        <hr/>
+
+        <div class="lower">
+          <div>
+            <p>Price per day</p>
+            <h2>${{car.price_per_day}}</h2>
+          </div>
+
+          <vs-button @click="carSelected" type="flat" :active="selected">Rent Now</vs-button>
+        </div>
       </div>
     </div>
+
+    
   </div>
 </template>
 

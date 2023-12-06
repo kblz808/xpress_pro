@@ -1,6 +1,10 @@
 <script>
 import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
+
+import axios from 'axios'
+import {useUserStore} from '../store.js'
+
 export default {
   components: {
     Banner,
@@ -8,14 +12,20 @@ export default {
   },
   data() {
     return {
-      name: '',
-      username: '',
+      first_name: '',
+      last_name: '',
       password: '',
-      re_password: '',
+      confirm_password: '',
       email: '',
       phone: '',
     };
   },
+  methods: {
+    handleRegister() {
+      const userStore = useUserStore();
+      userStore.register({first_name: this.first_name, last_name: this.last_name, email: this.email, phone_number: this.phone, password: this.password, password_confirmation: this.confirm_password});
+    }
+  }
 }
 </script>
 
@@ -35,21 +45,21 @@ export default {
 
   <div class="form">
     <div class="form1">
-      <vs-input v-mode="name" placeholder="Name" input-style="border" />
-      <vs-input v-mode="email" placeholder="Email" input-style="border" />
+      <vs-input v-model="first_name" placeholder="First Name" input-style="border" />
+      <vs-input v-model="email" placeholder="Email" input-style="border" />
     </div>
 
     <div class="form2">
-      <vs-input v-mode="username" placeholder="Username" input-style="border" />
-      <vs-input v-mode="phone" placeholder="Phone" input-style="border" />
+      <vs-input v-model="last_name" placeholder="Last name" input-style="border" />
+      <vs-input v-model="phone" placeholder="Phone" input-style="border" />
     </div>
 
     <div class="form3">
-      <vs-input v-mode="password" placeholder="Password" input-style="border" />
-      <vs-input v-mode="re_password" placeholder="Re-enter Password" input-style="border" />
+      <vs-input v-model="password" placeholder="Password" input-style="border" />
+      <vs-input v-model="confirm_password" placeholder="Confirm Password" input-style="border" />
     </div>
 
-    <vs-button>Register Now</vs-button>
+    <vs-button @click="handleRegister">Register Now</vs-button>
   </div>
 </div>
 

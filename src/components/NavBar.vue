@@ -1,10 +1,29 @@
 <script>
+
+import {useUserStore} from '../store.js'
+
 export default {
+    data() {
+        return {
+            logged_in: false,
+        }
+    },
     methods: {
         handleSignIn(){
             this.$router.push('/login');
+        },
+        handleLogout(){
+            const userStore = useUserStore();
+            userStore.logout();
+            this.$router.push('/');
+        }
+    },
+    mounted() {
+        if(localStorage.getItem('token')){
+            this.logged_in = true;
         }
     }
+    
 }
 </script>
 
@@ -20,7 +39,8 @@ export default {
                 <ul href="#">About Us <i class='bx bx-chevron-down'></i></ul>               
                 <ul href="#">Blog</ul>               
             </nav>       
-        <vs-button color="#1ECB15" @click="handleSignIn">Sign in</vs-button>       
+        <vs-button color="#1ECB15" @click="handleSignIn" v-if="!logged_in">Sign in</vs-button>
+        <vs-button color="#1ECB15" @click="handleLogout" v-if="logged_in">Log Out</vs-button>
     </div>
 
 </template>
