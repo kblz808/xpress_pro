@@ -21,6 +21,7 @@
                 <div class="input-1">
                     <div>
                         <h6>Drop Off Location</h6>    
+
                         <vs-input v-model="dropoff_location" input-style="border" placeholder="Enter your dropoff location" />    
                     </div>
                     <div>
@@ -105,6 +106,9 @@
         color: #1ECB15;
     }
     .form {
+        color: white;
+        background-color: #14141477;
+        margin: 80px 0px;
         background: #ffffffee;
         margin-top: 24px;
         padding: 24px;
