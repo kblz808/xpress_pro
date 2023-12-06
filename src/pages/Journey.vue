@@ -1,73 +1,80 @@
 <template>
 <Banner/>
-<NavBar/>
 
-<div class="container">
-  <h1>Looking for a <span>vehicle?</span> You're at the right place.</h1>
+<div class="outer">
+  <NavBar/>
 
-  <div class="box">
-    <div class="upper">
-      <div class="left">
-        <h3>What is your vehicle type?</h3>
-        <div class="car_types">
-          <div class="logo" :style="{'background': car_clicked == 'car' ? 'yellow' : 'green'}" @click="carClicked('car')">
-            <img src="/images/car.png">
-            Car
+  <div class="container">
+    <h1>Looking for a <span>vehicle?</span> You're at the right place.</h1>
+
+    <div class="box">
+      <div class="upper">
+        <div class="left">
+          <h3>What is your vehicle type?</h3>
+          <div class="car_types">
+            <div class="logo" :style="{'background': car_clicked == 'car' ? 'yellow' : 'green'}" @click="carClicked('car')">
+              <img src="/images/car.png">
+              Car
+            </div>
+
+            <div class="logo" :style="{'background': car_clicked == 'van' ? 'yellow' : 'green'}" @click="carClicked('van')">
+              <img src="/images/van.png">
+              Van
+            </div>
+
+            <div class="logo" :style="{'background': car_clicked == 'minibus' ? 'yellow' : 'green'}" @click="carClicked('minibus')">
+              <img src="/images/minibus.png">
+              Minibus
+            </div>
+
+            <div class="logo" :style="{'background': car_clicked == 'sports' ? 'yellow' : 'green'}" @click="carClicked('sports')">
+              <img src="/images/sportscar.png">
+              Prestige
+            </div>
           </div>
+        </div>
 
-          <div class="logo" :style="{'background': car_clicked == 'van' ? 'yellow' : 'green'}" @click="carClicked('van')">
-            <img src="/images/van.png">
-            Van
+        <div class="right">
+          <div class="forms">
+            <div>
+              Pick Up Location
+              <vs-input v-model="pickup_location" input-style="border" placeholder="Enter your pickup location" />
+            </div>
+
+            <div>
+              Drop Off Location
+              <vs-input v-model="dropoff_location" input-style="border" placeholder="Enter your dropoff location" />
+            </div>
           </div>
+    
+          <div class="forms">
+            <div>
+              Pick Up Date & Time
+              <vs-input v-model="pickup_date" type="date"  />
+            </div>
 
-          <div class="logo" :style="{'background': car_clicked == 'minibus' ? 'yellow' : 'green'}" @click="carClicked('minibus')">
-            <img src="/images/minibus.png">
-            Minibus
-          </div>
-
-          <div class="logo" :style="{'background': car_clicked == 'sports' ? 'yellow' : 'green'}" @click="carClicked('sports')">
-            <img src="/images/sportscar.png">
-            Prestige
+            <div>
+              <vs-input v-model="time" type="time" label="Time" />
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="right">
-        <div class="forms">
-          <div>
-            Pick Up Location
-            <vs-input v-model="pickup_location" input-style="border" placeholder="Enter your pickup location" />
-          </div>
-
-          <div>
-            Drop Off Location
-            <vs-input v-model="dropoff_location" input-style="border" placeholder="Enter your dropoff location" />
-          </div>
-        </div>
-      
-        <div class="forms">
-          <div>
-            Pick Up Date & Time
-            <vs-input v-model="pickup_date" type="date"  />
-          </div>
-
-          <div>
-            <vs-input v-model="time" type="time" label="Time" />
-          </div>
-        </div>
-      </div>
+      <vs-button color="success" @click="rentClicked"><router-link to="/sight">Rent Now</router-link></vs-button>
     </div>
-
-    <vs-button color="success" @click="rentClicked"><router-link to="/sight">Rent Now</router-link></vs-button>
   </div>
 </div>
 </template>
 
 <style scoped>
+.outer {
+  background-image: url("/images/subheader.jpg");
+  padding: 0 120px;
+}
+
 .container {
-  background-image: url("/images/1.jpg");
   color: white;
-  padding: 100px 120px;
+  padding: 100px 0;
 }
 
 .container h1 {
