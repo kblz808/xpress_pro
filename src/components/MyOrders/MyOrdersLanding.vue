@@ -4,7 +4,7 @@
         <p class="title">My Orders</p>
     </div>
     <div class="container-lower">
-        <Profile />
+        <Profile @menu-click="handleMenuClick" :activeMenu="activeMenu" />
         <div class="right">
             <div class="orders">
                 <p>Completed</p>
@@ -30,6 +30,7 @@
     .container-upper {
         height: 300px;
         background-image: url('/images/bg.jpg');
+        padding: 10px 120px;
     }
     .title{
         color: white;
@@ -72,6 +73,13 @@
         data() {
             return {
                 orders: ordersData,
+                activeMenu: 'orders', 
+            }
+        },
+        
+        methods: {
+            handleMenuClick(menu){
+                this.activeMenu = menu;
             }
         },
         components: {
