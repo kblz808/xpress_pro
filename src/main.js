@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import Home from './pages/Home.vue'
+import Dashboard from './pages/Dashboard.vue'
 import Journey from './pages/Journey.vue'
 import Sight from './pages/Sight.vue'
 import Cars from './pages/Cars.vue'
@@ -18,6 +19,7 @@ import './index.css'
 
 const routes = [
   {path: '/', component: Home},
+  {path: '/dashboard', component: Dashboard},
   {path: '/journey', component: Journey},
   {path: '/sight', component: Sight},
   {path: '/cars', component: Cars},
