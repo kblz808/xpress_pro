@@ -7,7 +7,7 @@ import {useUserStore} from '../store.js'
 export default {
   data() {
     return {
-      username: '',
+      email: '',
       password: '',
     };
   },
@@ -16,9 +16,11 @@ export default {
     NavBar,
   },
   methods: {
-    handleSubmit(){
+    async handleSubmit(){
       const userStore = useUserStore();
-      userStore.login({email: this.username,  password: this.password});
+      if(await userStore.login({email: this.email,  password: this.password})){
+        this.$router.push('/profile');
+      }
     }
   },
 }
@@ -33,7 +35,7 @@ export default {
   <div class="container">
     <h2>Login</h2>
 
-    <vs-input placeholder="username" v-model="username">
+    <vs-input placeholder="username" v-model="email">
       <template #icon>
         <i class="bx bx-user" />
       </template>
