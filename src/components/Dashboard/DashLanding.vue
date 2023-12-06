@@ -4,7 +4,7 @@
         <p>Dashboard</p>
     </div>
     <div class="container-lower">
-        <Profile @menu-click="handleMenuClick"/>
+        <Profile @menu-click="handleMenuClick" :activeMenu="activeMenu"/>
         <router-view></router-view>
         <div class="right">
             <Records />
@@ -19,6 +19,7 @@
     .container-upper {
         height: 300px;
         background-image: url('/images/bg.jpg');
+        padding: 10px 120px;
     }
     p{
         color: white;
@@ -58,7 +59,8 @@
         },
         data(){
             return {
-                activeMenu: 'dashboard',
+                activeMenu: 'dashboard', 
+                active: 1,
             }
         },
         methods: {

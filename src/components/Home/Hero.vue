@@ -92,7 +92,7 @@
     .hero {
         background-image: url('/images/bg.jpg');
         height: 972px;
-        padding: 0 120px;
+        padding: 10px 120px;
     }
     .info {
         padding: 60px 0px;
@@ -106,7 +106,6 @@
         color: #1ECB15;
     }
     .form {
-        color: white;
         background-color: #14141477;
         margin: 80px 0px;
         background: #ffffffee;

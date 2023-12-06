@@ -12,6 +12,13 @@ export default {
         handleSignIn(){
             this.$router.push('/login');
         },
+        handleBooking() {
+            if(localStorage.getItem('token')) {
+                this.$router.push('/additional');
+            } else {
+                this.$router.push('/login');
+            }
+        },
         handleLogout(){
             const userStore = useUserStore();
             userStore.logout();
@@ -23,26 +30,23 @@ export default {
             this.logged_in = true;
         }
     }
-    
 }
 </script>
 
 <template>
     <div class="main">
-        <!-- <img src="../assets/logo.png" alt="">  -->
         <router-link to="/"><h1>XpressPro</h1></router-link>
             <nav>
                 <router-link to="/"><ul href="#">Home</ul></router-link>
                 <router-link to="/cars_filter"><ul href="#">Cars</ul></router-link>
                 <router-link to="/journey"><ul href="#">Booking</ul></router-link>
-                <ul href="#">My Account</ul>
+                <router-link to="/profile" @click="handleBooking"><ul href="#" >My Account</ul></router-link>                
                 <ul href="#">About Us <i class='bx bx-chevron-down'></i></ul>               
-                <ul href="#">Blog</ul>               
+                <router-link to="/blog"><ul href="#">Blog</ul> </router-link>  
             </nav>       
         <vs-button color="#1ECB15" @click="handleSignIn" v-if="!logged_in">Sign in</vs-button>
         <vs-button color="#1ECB15" @click="handleLogout" v-if="logged_in">Log Out</vs-button>
     </div>
-
 </template>
 
 <style scoped>

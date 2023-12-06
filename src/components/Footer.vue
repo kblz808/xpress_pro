@@ -72,7 +72,7 @@
         background-color: #1a1919;
         height: 460px;
         color: lightgray;
-        padding: 90px 240px 50px 240px;
+        padding: 50px 120px;
         display: flex;
         flex-direction: column;
         align-content: center;
@@ -80,7 +80,7 @@
     }
     .upper{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
     .lower{
         display: flex;

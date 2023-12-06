@@ -1,27 +1,38 @@
 <template>
     <div class="left">
-      <img src="/images/1.jpg" alt="">
+      <img src="/images/girl.jpg" alt="">
       <div class="info">
         <h3>Monica Lucas</h3>
         <h5>monica@xpresspro.com</h5>
       </div>
   
       <div class="menu">
-        <div :class="{ 'menu-item': true, 'active': activeMenu === 'dashboard' }">
-          <a @click="setActiveMenu('dashboard')"> <i class='bx bxs-home'></i> Dashboard</a>
-        </div>
-        <div :class="{ 'menu-item': true, 'active': activeMenu === 'profile' }">
-          <a @click="setActiveMenu('profile')"> <i class='bx bxs-user'></i> My Profile</a>
-        </div>
-        <div :class="{ 'menu-item': true, 'active': activeMenu === 'orders' }">
-          <a @click="setActiveMenu('orders')"> <i class='bx bx-calendar'></i> My Orders</a>
-        </div>
-        <div :class="{ 'menu-item': true, 'active': activeMenu === 'favoriteCars' }">
-          <a @click="setActiveMenu('favoriteCars')"><i class='bx bxs-car'></i> My Favorite Cars</a>
-        </div>
-        <div :class="{ 'menu-item': true, 'active': activeMenu === 'signOut' }">
-          <a @click="setActiveMenu('signOut')"> <i class='bx bx-log-out'></i> Sign Out</a>
-        </div>
+        <router-link to="/dashboard" @click="setActiveMenu('dashboard')">
+          <div :class="{ 'menu-item': true, 'active': activeMenu === 'dashboard' }">
+             <i class='bx bxs-home'></i> Dashboard
+          </div>
+
+        </router-link>
+        <router-link to="/profile" @click="setActiveMenu('profile')">
+          <div :class="{ 'menu-item': true, 'active': activeMenu === 'profile' }">
+             <i class='bx bxs-user'></i> My Profile
+          </div>
+        </router-link>
+        <router-link to="/myorders" @click="setActiveMenu('orders')">
+          <div :class="{ 'menu-item': true, 'active': activeMenu === 'orders' }">
+             <i class='bx bx-calendar'></i> My Orders
+          </div>
+        </router-link>
+        <router-link to="/myfavorite"  @click="setActiveMenu('favorite')">
+          <div :class="{ 'menu-item': true, 'active': activeMenu === 'favorite' }">
+            <i class='bx bxs-car'></i> My Favorite Cars
+          </div>
+        </router-link>
+        <router-link to="/login" @click="setActiveMenu('signOut')">
+          <div :class="{ 'menu-item': true, 'active': activeMenu === 'signOut' }">
+             <i class='bx bx-log-out'></i> Sign Out
+          </div>
+        </router-link>
       </div>
     </div>
 </template>
@@ -78,16 +89,8 @@
     
     .menu .menu-item.active {
         background-color: limegreen;
-    }
-    
-    .menu a {
-        color: black;
-        text-decoration: none;
-        padding: 10px;
-    }
-    
-    .menu .active a {
         color: white;
+        padding: 10px;
         font-weight: bold;
     }
 </style>
@@ -95,14 +98,9 @@
 
 <script>
   export default {
-    data() {
-      return {
-        activeMenu: 'dashboard',
-      };
-    },
+    props: ["activeMenu"],
     methods: {
       setActiveMenu(menu) {
-        this.activeMenu = menu;
         this.$emit('menu-click', menu);
       },
     },

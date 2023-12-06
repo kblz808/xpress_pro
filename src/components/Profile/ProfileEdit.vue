@@ -62,7 +62,7 @@
 
 <style scoped>
     .container{
-        width: 951;
+        width: 951px;
         background-color: white;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         padding: 30px;

@@ -5,7 +5,7 @@
         <p>My Favorite Cars</p>
     </div>
     <div class="container-lower">
-        <Profile />
+        <Profile @menu-click="handleMenuClick" :activeMenu="activeMenu" />
         <router-view></router-view>
         <div class="right">
             <Favorite />
@@ -18,6 +18,7 @@
     .container-upper {
         height: 300px;
         background-image: url('/images/bg.jpg');
+        padding: 10px 120px;
     }
     p{
         color: white;
@@ -53,6 +54,16 @@
             Profile,
             Favorite,
             
-        }
+        },
+        data() {
+            return {
+                activeMenu: 'favorite', 
+            };
+        },
+        methods: {
+            handleMenuClick(menu){
+                this.activeMenu = menu;
+            }
+        },
     }
 </script>
