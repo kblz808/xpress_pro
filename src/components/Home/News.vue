@@ -9,7 +9,6 @@
         <div class="news-container">
             <div class="news">
                 <img src="/images/pic-blog-1.jpg" alt="">
-                <!-- <div class="date">Nov, 26</div> -->
                 <div class="info">
                     <h2>Enjoy Best Travel Experience</h2>
                     <h3>Traveling is an enriching experience that<br/> allows us to explore new destinations,<br/> immerse ourselves in different cultures,<br/> and create lifelong memories.</h3>
@@ -18,7 +17,6 @@
             </div>
             <div class="news">
                 <img src="/images/pic-blog-2.jpg" alt="">
-                <!-- <div class="date">Nov, 26</div> -->
                 <div class="info">
                     <h2>Enjoy Best Travel Experience</h2>
                     <h3>Traveling is an enriching experience that<br/> allows us to explore new destinations,<br/> immerse ourselves in different cultures,<br/> and create lifelong memories.</h3>
@@ -27,7 +25,6 @@
             </div>
             <div class="news">
                 <img src="/images/pic-blog-3.jpg" alt="">
-                <!-- <div class="date">Nov, 26</div> -->
                 <div class="info">
                     <h2>Enjoy Best Travel Experience</h2>
                     <h3>Traveling is an enriching experience that<br/> allows us to explore new destinations,<br/> immerse ourselves in different cultures,<br/> and create lifelong memories.</h3>
@@ -39,12 +36,12 @@
 </template>
 
 <style scoped>
-    .container {
-        height: 800px;
-        background-color: #121212;
-        padding-top: 40px;
-    }
-    .text {
+  .container {
+    height: 800px;
+    background-color: #121212;
+    padding-top: 40px;
+  }
+  .text {
     color: white;
     display: flex;
     flex-direction: column;
@@ -79,39 +76,26 @@
   }
 
   .news{
-    /* background-color: #1ecb15; */
     height: 500px;
     width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.news-container{
-    padding: 45px 200px;
+  }
+  .news-container{
+    padding: 45px 120px;
     display: flex;
-    justify-content: space-around;
-}
-/* .date{
-    height: 100px;
-    width: 100px;
-    background-color: #1ecb15;
-    position: relative;
-    top: -30vh;
-    left: -18vh;
-} */
-.info{
+    gap: 30px;
+    justify-content: space-between;
+  }
+  .info{
     height: 1300px;
-    width: 400px;
     padding: 30px;
     border-radius: 12px;
     background-color: #121212;
     position: relative;
     top: -50px;
     color: white;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center; */
   }
 
   h2{

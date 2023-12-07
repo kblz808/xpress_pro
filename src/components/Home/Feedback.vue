@@ -46,7 +46,8 @@
         height: 900px;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+        gap: 40px;
         padding-left: 200px;
         padding-right: 200px;
         padding-bottom: 200px;
@@ -56,7 +57,6 @@
         background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.644), rgba(78, 78, 80, 0)),url('/images/girl.jpg');
         background-size: cover;
         height: 70vh;
-        width: 50vh;
         padding: 52px;
         color: white;
         border-radius: 12px;
@@ -71,7 +71,6 @@
         background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.644), rgba(78, 78, 80, 0)),url('/images/boy.jpg');
         background-size: cover;
         height: 70vh;
-        width: 50vh;
         padding: 52px;
         color: white;
         border-radius: 12px;
@@ -87,7 +86,6 @@
         background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.644), rgba(78, 78, 80, 0)),url('/images/3.jpg');
         background-size: cover;
         height: 70vh;
-        width: 50vh;
         padding: 52px;
         color: white;
         border-radius: 12px;

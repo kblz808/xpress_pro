@@ -102,9 +102,9 @@
   }
 
   .features-container{
-    padding: 45px 200px;
+    padding: 45px 120px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .features-1{
     display: flex;
