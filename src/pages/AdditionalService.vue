@@ -1,30 +1,33 @@
 <template>
 <Banner />
-<NavBar />
 
-<div class="outer">
-  <vs-button @click="handleFinish">Finish</vs-button>
+<div class="outer_container">
+  <NavBar />
 
-  <div class="container">
-    <div class="left">
-      <div class="image_container">
-        <img src="/images/child_seat.png" />
+  <div class="outer">
+    <vs-button @click="handleFinish">Finish</vs-button>
+
+    <div class="container">
+      <div class="left">
+        <div class="image_container">
+          <img src="/images/child_seat.png" />
+        </div>
+
+        <div class="seat_tools">
+          <vs-button @click="remove"><i class='bx bx-minus'></i></vs-button>
+          <div class="count">{{count}}</div>
+          <vs-button @click="add"><i class='bx bx-plus'></i></vs-button>
+        </div>
+
+        <p>Number of child seat</p>
       </div>
 
-      <div class="seat_tools">
-        <vs-button @click="remove"><i class='bx bx-minus'></i></vs-button>
-        <div class="count">{{count}}</div>
-        <vs-button @click="add"><i class='bx bx-plus'></i></vs-button>
-      </div>
-
-      <p>Number of child seat</p>
-    </div>
-
-    <div class="right">
-      <div class="sight">
-        <template v-for="sight in sights">
-          <SightTime :sight=sight />
-        </template>
+      <div class="right">
+        <div class="sight">
+          <template v-for="sight in sights">
+            <SightTime :sight=sight />
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -32,8 +35,13 @@
 </template>
 
 <style scoped>
+.outer_container {
+  padding: 0 120px;
+  background: black;
+}
+
 .outer {
-  padding: 40px 120px;
+  padding: 60px 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -94,7 +102,7 @@ import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
 import SightTime from '../components/SightTime.vue'
 
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   components: {
@@ -106,7 +114,15 @@ export default {
     return {
       count: 1,
       sights: JSON.parse(localStorage.getItem("sights")),
+      // selected_car: JSON.parse(localStorage.getItem("selected_car")),
+      user_id: null,
+      journey: JSON.parse(localStorage.getItem("journey")),
+      driver: 1,
     }
+  },
+  mounted() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.user_id = user.id;
   },
   methods: {
     add(){
@@ -123,8 +139,7 @@ export default {
       const journey = JSON.parse(localStorage.getItem("journey"));
       const sights = this.sights;
       const child_seat = this.count;
-
-      console.log(journey);
+      const vehicle = JSON.parse(localStorage.getItem("selected_car"));
 
       const data = {
         origin: journey.pickup_location,
@@ -132,16 +147,18 @@ export default {
         Departure_Date: journey.pickup_date,
         Departure_time: journey.time,
         list_of_Sightseeing: this.sights,
-        user: 1,
-        vehicle: 1,
+        user: this.user_id,
+        vehicle: vehicle,
       }
+
+      console.log(data);
 
       axios.post('https://xpresspro-core.onrender.com/journeys', data)
         .then(res => {
           console.log(res);
         })
         .catch(err => {
-          console.log(err)
+          console.log(err);
         })
     }
   }

@@ -1,25 +1,42 @@
 <template>
 <Banner/>
-<NavBar/>
 
-<div class="container">
-  <template v-for="car in cars">
-    <ApiCarCard :car=car @selected="selectCar" ref="childRef" />
-  </template>
+<div class="outer_container">
+  <NavBar/>
+
+  <div class="outer">
+    <vs-button @click="handleNext">Next</vs-button>
+
+    <div class="container">
+      <template v-for="car in cars">
+        <ApiCarCard :car=car @selected="selectCar" ref="childRef" />
+      </template>
+    </div>
+  </div>
 </div>
 
 </template>
 
 <style scoped>
 .container {
-  background: black;
-  padding: 120px;
+  padding: 80px 0;
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+.outer_container {
+  background: black;
+  padding: 0 120px;
+}
+
+.outer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 60px 0;
+}
 </style>
 
 <script>
@@ -49,6 +66,10 @@ export default {
         item.childMethod(carId);
       }
     },
+    handleNext(){
+      localStorage.setItem("selected_car", JSON.stringify(this.selected));
+      this.$router.push('/additional');
+    }
   },
   mounted(){
     axios.get('https://xpresspro-core.onrender.com/vehicles')

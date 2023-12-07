@@ -1,23 +1,24 @@
 <template>
 <Banner/>
-<NavBar/>
 
+<div class="outer_container">
+  <NavBar/>
 
-<div class="outer">
-  <vs-button @click="handleNext">Next</vs-button>
+  <div class="outer">
+    <vs-button @click="handleNext">Next</vs-button>
 
-  <div class="container">  
-    <template v-for="sight in sights">
-      <SightCard :sight=sight @card-clicked="handleCardClicked" />
-    </template>
+    <div class="container">  
+      <template v-for="sight in sights">
+        <SightCard :sight=sight @card-clicked="handleCardClicked" />
+      </template>
+    </div>
+
   </div>
-
 </div>
 </template>
 
 <style scoped>
 .container {
-  background: black;
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
@@ -28,10 +29,15 @@
 
 .outer {
   background: black;
+  padding: 60px 0;
   display: flex;
   flex-direction: column;
-  padding: 120px;
   align-items: start;
+}
+
+.outer_container {
+  padding: 0 120px;
+  background: black;
 }
 </style>
 

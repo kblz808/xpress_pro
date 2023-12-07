@@ -19,7 +19,7 @@ export default {
     async handleSubmit(){
       const userStore = useUserStore();
       if(await userStore.login({email: this.email,  password: this.password})){
-        this.$router.push('/profile');
+        this.$router.push('/dashboard');
       }
     }
   },

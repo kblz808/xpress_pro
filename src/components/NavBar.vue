@@ -55,6 +55,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 10px 0;
     }
     nav{
         display: flex;
