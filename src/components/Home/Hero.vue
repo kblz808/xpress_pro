@@ -3,41 +3,7 @@
         <NavBar/>
         <div class="info">
             <h1>Looking for a <span>vehicle</span>? You're <br/>in the right place.</h1>
-            <div class="form">
-                <div class="input-1">
-                    <div>
-                        <h6>Pick Up Location</h6>
-
-                        <vs-input input-style="border" placeholder="Enter yout Pickup location" v-model="pickup_location"></vs-input>
-                    </div>
-                    <div>
-                        <h6>Pick Up Date & Time</h6>
-                        <div class="form_inside">
-                            <vs-input v-model="pickup_date" type="date" label="Date" />
-                            <vs-input v-model="pickup_time" type="time" label="time" />
-                        </div>   
-                    </div>
-                </div>
-                <div class="input-1">
-                    <div>
-                        <h6>Drop Off Location</h6>    
-
-                        <vs-input v-model="dropoff_location" input-style="border" placeholder="Enter your dropoff location" />    
-                    </div>
-                    <div>
-                        <h6>Vehicle Type</h6>
-                        <br/>
-
-                        <vs-select placeholder="Vehicle Type" v-model="vehicle_type">
-                        </vs-select>
-                    </div>
-
-                </div>
-                <div class="input-1">
-                    <vs-button color="#1ECB15" @click="handleBooking">Book Now</vs-button>                          
-                </div>
-            </div>
-
+            <JourneyForm />
             <div class="step-container">
                 <div class="step">
                     <div class="item completed">1</div>
@@ -96,6 +62,9 @@
     }
     .info {
         padding: 60px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 42px;
     }
     h1 {
         color: white;
@@ -105,34 +74,9 @@
     span {
         color: #1ECB15;
     }
-    .form {
-        background-color: #14141477;
-        margin: 80px 0px;
-        background: #ffffffee;
-        margin-top: 24px;
-        padding: 24px;
-        height: 233px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-    .input-1 {
-        display: grid;
-        flex-direction: column;
-        justify-content: space-between;
-        align-content: space-between;
-        gap: 30px;
-    }
-    .form_inside {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
     .step-container {
         display: flex;
         justify-content: space-between;
-        margin-top: 150px;
     }
     .item {
         border-radius: 5px;
@@ -162,10 +106,12 @@
 
 <script>
 import NavBar from '../NavBar.vue'
+import JourneyForm from '../JourneyForm.vue';
 
 export default {
     components: {
-        NavBar
+        NavBar,
+        JourneyForm,
     },
     data() {
         return {
