@@ -4,6 +4,8 @@ import Banner from '../components/Banner.vue'
 
 import {useUserStore} from '../store.js'
 
+import {VsNotification} from 'vuesax-alpha'
+
 export default {
   data() {
     return {
@@ -20,7 +22,19 @@ export default {
       const userStore = useUserStore();
       if(await userStore.login({email: this.email,  password: this.password})){
         this.$router.push('/dashboard');
+      } else {
+        this.errorNotification();
       }
+    },
+    errorNotification(){
+      VsNotification({
+        progressAuto: true,
+        icon: `<i class='bx bx-error' ></i>`,
+        position: 'top-right',
+        color: 'danger',
+        title: 'Login Failed',
+        text: 'Unable to sign in. Please check your username and password are correct and try again. If you continue to experience issues, contact our support team.',
+      })
     }
   },
 }
