@@ -11,6 +11,10 @@
     <vs-button color="success" @click="handleNext">Next</vs-button>
   </div>
 
+  <div class="stepper">
+    <Stepper :current="current"/>
+  </div>
+
   <div class="outer">
     <div class="container">  
       <template v-for="sight in sights">
@@ -32,10 +36,12 @@
   padding: 60px 0;
   align-items: start;
 }
+
 .buttons{
   display: flex;
   justify-content: space-between;
 }
+
 h1{
   font-size: 32px;
   color:white;
@@ -48,12 +54,13 @@ h1{
 .upper{
   height: 300px;
   background-image: url('/images/bg.jpg');
-  padding: 0 120px;
-  
+  padding: 0 120px;  
 }
+
 .outer_container {
   padding: 30px 120px;
   background-color: aliceblue;
+
 }
 </style>
 
@@ -62,6 +69,8 @@ import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
 import SightCard from '../components/SightCard.vue'
 
+import Stepper from '../components/Stepper.vue'
+
 import axios from 'axios';
 
 export default {
@@ -69,12 +78,14 @@ export default {
     Banner,
     NavBar,
     SightCard,
+    Stepper,
   },
 
   data() {
     return {
       sights: [],
       selectedSights: [],
+      current: 2,
     }
   },
 

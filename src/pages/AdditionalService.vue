@@ -7,6 +7,10 @@
 <div class="outer_container">
 
 
+  <div class="stepper">
+    <Stepper :current="current"/>
+  </div>  
+
   <div class="outer">
     <div class="buttons">
       <vs-button color="success" @click="handleBack">Back</vs-button>
@@ -133,6 +137,8 @@ import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
 import SightTime from '../components/SightTime.vue'
 
+import Stepper from '../components/Stepper.vue'
+
 import axios from 'axios'
 
 export default {
@@ -140,9 +146,11 @@ export default {
     Banner,
     NavBar,
     SightTime,
+    Stepper,
   },
   data() {
     return {
+      current: 4,
       count: 1,
       sights: JSON.parse(localStorage.getItem("sights")),
       // selected_car: JSON.parse(localStorage.getItem("selected_car")),
