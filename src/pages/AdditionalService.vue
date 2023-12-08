@@ -190,16 +190,7 @@ export default {
       
       axios.post('https://xpresspro-core.onrender.com/journeys', data)
         .then(res => {
-          this.$router.push({
-            name: 'completed', 
-            query: {data: JSON.stringify(data)}
-          
-        });
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
+          this.$router.push({name: 'completed', query: {data: JSON.stringify(data)}});
         })
     },
     handleBack(){
