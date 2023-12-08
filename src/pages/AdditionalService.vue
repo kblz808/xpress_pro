@@ -1,12 +1,15 @@
 <template>
 <Banner />
-
+<div class="upper">
+  <NavBar/>
+  <h1>Additional Services</h1>
+</div>
 <div class="outer_container">
-  <NavBar />
+
 
   <div class="outer">
     <div class="buttons">
-      <vs-button @click="handleBack">Back</vs-button>
+      <vs-button color="success" @click="handleBack">Back</vs-button>
       <vs-button color="success" @click="handleFinish">Finish</vs-button>
     </div>
 
@@ -26,10 +29,13 @@
       </div>
 
       <div class="right">
-        <div class="sight">
+        <div class="sight" v-if="sights && sights.length > 0">
           <template v-for="sight in sights">
-            <SightTime :sight=sight />
+            <SightTime :sight="sight" />
           </template>
+        </div>
+        <div v-else>
+          Nothing is selected.
         </div>
       </div>
     </div>
@@ -38,24 +44,31 @@
 </template>
 
 <style scoped>
-.outer_container {
+h1{
+  font-size: 32px;
+  color:white;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 30px;
+}
+
+
+.upper{
+  height: 300px;
+  background-image: url('/images/bg.jpg');
   padding: 0 120px;
-  background: black;
+  
+}
+.outer_container {
+  padding: 30px 120px;
+  background-color: aliceblue;
 }
 .buttons{
   display: flex;
-  gap: 165.4vh;
+  justify-content: space-between;
 }
-
-.outer {
-  padding: 60px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: start;
-}
-
 .container {
+  padding-top: 30px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -73,7 +86,6 @@ img {
 }
 
 .count {
-  background: white;
   color: black;
   padding: 16px 32px;
   display: flex;
@@ -87,11 +99,23 @@ img {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  background: #eeeeee;
+  height: 450px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
   padding: 36px;
   border-radius: 32px;
 }
-
+.right{
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .seat_tools {
   display: flex;
   justify-content: space-between;
@@ -162,16 +186,17 @@ export default {
 
       axios.post('https://xpresspro-core.onrender.com/journeys', data)
         .then(res => {
+          // this.$router
           console.log(res);
         })
         .catch(err => {
           console.log(err);
         })
     },
-    // handleBack(){
-    //   localStorage.setItem("additional", JSON.stringify(this.selected));
-    //   this.$router.push('/cars');
-    // }
+    handleBack(){
+      localStorage.setItem('', JSON.stringify(this.selected));
+      this.$router.push('/cars');
+    }
   }
 }
 </script>

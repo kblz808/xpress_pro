@@ -61,9 +61,10 @@
 .card {
   width: 318px;
   height: 358px;
-  background: #222222;
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   border-radius: 10px;

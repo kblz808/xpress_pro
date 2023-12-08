@@ -1,13 +1,16 @@
 <template>
 <Banner/>
-
-<div class="outer_container">
+<div class="upper">
   <NavBar/>
+  <h1>Vehicle Fleets</h1>
+</div>
+<div class="outer_container">
+
 
   <div class="outer">
     <div class="buttons">
-      <vs-button @click="handleBack">Back</vs-button>
-      <vs-button @click="handleNext">Next</vs-button>
+      <vs-button color="success" @click="handleBack">Back</vs-button>
+      <vs-button color="success" @click="handleNext">Next</vs-button>
     </div>
 
     <div class="container">
@@ -30,19 +33,26 @@
 }
 .buttons{
   display: flex;
-  gap: 165.4vh;
+  justify-content: space-between;
+}
+h1{
+  font-size: 32px;
+  color:white;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 30px;
 }
 
-.outer_container {
-  background: black;
+
+.upper{
+  height: 300px;
+  background-image: url('/images/bg.jpg');
   padding: 0 120px;
+  
 }
-
-.outer {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  padding: 60px 0;
+.outer_container {
+  padding: 30px 120px;
+  background-color: aliceblue;
 }
 </style>
 
