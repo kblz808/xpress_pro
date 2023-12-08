@@ -21,9 +21,11 @@ export default {
     };
   },
   methods: {
-    handleRegister() {
+    async handleRegister() {
       const userStore = useUserStore();
-      userStore.register({first_name: this.first_name, last_name: this.last_name, email: this.email, phone_number: this.phone, password: this.password, password_confirmation: this.confirm_password});
+      if(await userStore.register({first_name: this.first_name, last_name: this.last_name, email: this.email, phone_number: this.phone, password: this.password, password_confirmation: this.confirm_password}) == true){
+        this.$router.push('/login');
+      }
     }
   }
 }

@@ -4,9 +4,8 @@
   <NavBar/>
   <h1>Additional Services</h1>
 </div>
+
 <div class="outer_container">
-
-
   <div class="stepper">
     <Stepper :current="current"/>
   </div>  
@@ -56,15 +55,13 @@ h1{
   padding-top: 30px;
 }
 
-
 .upper{
-  height: 300px;
   background-image: url('/images/bg.jpg');
-  padding: 0 120px;
-  
+  padding: 0 120px 60px 120px;
 }
+
 .outer_container {
-  padding: 30px 120px;
+  padding: 0px 120px;
   background-color: aliceblue;
 }
 .buttons{
