@@ -139,7 +139,7 @@ img {
       const journey = {
         car_pickeed: this.car_picked,
         pickup_location: this.pickup_location,
-        droppof_location: this.dropoff_location,
+        dropoff_location: this.dropoff_location,
         pickup_date: this.pickup_date,
         time: this.time,
       };

@@ -18,6 +18,7 @@ import Login from './pages/Login.vue'
 import CarsFilter from './pages/CarsFilter.vue'
 import Blog from './pages/Blog.vue'
 import CarDialog from './pages/CarDialog.vue'
+import Completed from './pages/Completed.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 import './index.css'
@@ -37,6 +38,7 @@ const routes = [
   {path: '/cars_filter', component: CarsFilter},
   {path: '/blog', component: Blog},
   {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true},
+  {path: '/completed', name: 'completed', component: Completed},
 ]
 
 const router = createRouter({
