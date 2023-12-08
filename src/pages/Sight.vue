@@ -4,6 +4,10 @@
 <div class="outer_container">
   <NavBar/>
 
+  <div class="stepper">
+    <Stepper :current="current"/>
+  </div>
+
   <div class="outer">
     <vs-button @click="handleNext">Next</vs-button>
 
@@ -28,7 +32,6 @@
 }
 
 .outer {
-  background: black;
   padding: 60px 0;
   display: flex;
   flex-direction: column;
@@ -37,7 +40,7 @@
 
 .outer_container {
   padding: 0 120px;
-  background: black;
+  background: white;
 }
 </style>
 
@@ -46,6 +49,8 @@ import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
 import SightCard from '../components/SightCard.vue'
 
+import Stepper from '../components/Stepper.vue'
+
 import axios from 'axios';
 
 export default {
@@ -53,12 +58,14 @@ export default {
     Banner,
     NavBar,
     SightCard,
+    Stepper,
   },
 
   data() {
     return {
       sights: [],
       selectedSights: [],
+      current: 2,
     }
   },
 
