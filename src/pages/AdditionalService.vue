@@ -191,7 +191,6 @@ export default {
 
       axios.post('https://xpresspro-core.onrender.com/journeys', data)
         .then(res => {
-          // this.$router
           console.log(res);
         })
         .catch(err => {
@@ -201,6 +200,16 @@ export default {
     handleBack(){
       localStorage.setItem('', JSON.stringify(this.selected));
       this.$router.push('/cars');
+    },
+    errorNotification(){
+      VsNotification({
+        progressAuto: true,
+        icon: `<i class='bx bx-error' ></i>`,
+        position: 'top-right',
+        color: 'danger',
+        title: 'Request Submission Error',
+        text: 'A problem was detected with your submission. Please ensure all required fields are filled out completely to avoid processing errors in the backend.',
+      })
     }
   }
 }
