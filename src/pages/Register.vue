@@ -57,8 +57,8 @@ export default {
     </div>
 
     <div class="form3">
-      <vs-input v-model="password" placeholder="Password" input-style="border" />
-      <vs-input v-model="confirm_password" placeholder="Confirm Password" input-style="border" />
+      <vs-input v-model="password" placeholder="Password" input-style="border" type="password"/>
+      <vs-input v-model="confirm_password" placeholder="Confirm Password" input-style="border" type="password"/>
     </div>
 
     <vs-button @click="handleRegister">Register Now</vs-button>
