@@ -121,6 +121,7 @@ export default {
 .car_show {
   padding: 60px 120px;
   display: flex;
+  justify-content: center;
 }
 
 .image img {

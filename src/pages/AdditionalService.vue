@@ -5,7 +5,10 @@
   <NavBar />
 
   <div class="outer">
-    <vs-button @click="handleFinish">Finish</vs-button>
+    <div class="buttons">
+      <vs-button @click="handleBack">Back</vs-button>
+      <vs-button color="success" @click="handleFinish">Finish</vs-button>
+    </div>
 
     <div class="container">
       <div class="left">
@@ -38,6 +41,10 @@
 .outer_container {
   padding: 0 120px;
   background: black;
+}
+.buttons{
+  display: flex;
+  gap: 165.4vh;
 }
 
 .outer {
@@ -160,7 +167,11 @@ export default {
         .catch(err => {
           console.log(err);
         })
-    }
+    },
+    // handleBack(){
+    //   localStorage.setItem("additional", JSON.stringify(this.selected));
+    //   this.$router.push('/cars');
+    // }
   }
 }
 </script>

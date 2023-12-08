@@ -5,7 +5,10 @@
   <NavBar/>
 
   <div class="outer">
-    <vs-button @click="handleNext">Next</vs-button>
+    <div class="buttons">
+      <vs-button @click="handleBack">Back</vs-button>
+      <vs-button @click="handleNext">Next</vs-button>
+    </div>
 
     <div class="container">
       <template v-for="car in cars">
@@ -24,6 +27,10 @@
   gap: 24px;
   flex-wrap: wrap;
   justify-content: center;
+}
+.buttons{
+  display: flex;
+  gap: 165.4vh;
 }
 
 .outer_container {
@@ -69,6 +76,10 @@ export default {
     handleNext(){
       localStorage.setItem("selected_car", JSON.stringify(this.selected));
       this.$router.push('/additional');
+    },
+    handleBack(){
+      localStorage.setItem("selected_car", JSON.stringify(this.selected));
+      this.$router.push('/sight');
     }
   },
   mounted(){

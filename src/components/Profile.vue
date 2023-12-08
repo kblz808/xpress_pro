@@ -43,7 +43,7 @@
    .left{
         border-radius: 10px;
         width: 301px;
-        height: 512px;
+        height: 550px;
         background-color: white;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         padding: 30px;

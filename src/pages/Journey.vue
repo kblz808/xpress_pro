@@ -7,9 +7,11 @@
   <div class="container">
     <h1>Looking for a <span>vehicle?</span> You're at the right place.</h1>
     <JourneyForm />
-
-   
   </div>
+</div>
+<div class="lower">
+  <Footer />
+
 </div>
 </template>
 
@@ -34,19 +36,24 @@
   color: green;
 }
 
-
+.lower{
+  background-color: #1a1919;
+  padding: 0 120px;
+}
 </style>
 
 <script>
 import NavBar from '../components/NavBar.vue'
 import Banner from '../components/Banner.vue'
 import JourneyForm from '../components/JourneyForm.vue';
+import Footer from '../components/Footer.vue'
 
 export default {
   components: {
     NavBar,
     Banner,
     JourneyForm,
+    Footer,
   },
  
 }

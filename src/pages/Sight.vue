@@ -1,17 +1,23 @@
 <template>
 <Banner/>
 
-<div class="outer_container">
+<div class="upper">
   <NavBar/>
+  <h1>Sight-seeings Stops</h1>
+</div>
+<div class="outer_container">
+  <div class="buttons">
+    <vs-button color="success" @click="handleBack">Back</vs-button>
+    <vs-button color="success" @click="handleNext">Next</vs-button>
+  </div>
 
   <div class="outer">
-    <vs-button @click="handleNext">Next</vs-button>
-
     <div class="container">  
       <template v-for="sight in sights">
         <SightCard :sight=sight @card-clicked="handleCardClicked" />
       </template>
     </div>
+    
 
   </div>
 </div>
@@ -26,18 +32,28 @@
   padding: 60px 0;
   align-items: start;
 }
-
-.outer {
-  background: black;
-  padding: 60px 0;
+.buttons{
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  justify-content: space-between;
+}
+h1{
+  font-size: 32px;
+  color:white;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 30px;
 }
 
-.outer_container {
+
+.upper{
+  height: 300px;
+  background-image: url('/images/bg.jpg');
   padding: 0 120px;
-  background: black;
+  
+}
+.outer_container {
+  padding: 30px 120px;
+  background-color: aliceblue;
 }
 </style>
 
@@ -82,6 +98,10 @@ export default {
     handleNext(){
       localStorage.setItem("sights", JSON.stringify(this.selectedSights));
       this.$router.push('/cars');
+    },
+    handleBack(){
+      localStorage.setItem("sights", JSON.stringify(this.selectedSights));
+      this.$router.push('/journey');
     }
   }
 }
