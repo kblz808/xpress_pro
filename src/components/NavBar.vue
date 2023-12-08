@@ -22,7 +22,7 @@ export default {
         handleLogout(){
             const userStore = useUserStore();
             userStore.logout();
-            this.$router.push('/');
+            this.$router.go();
         }
     },
     mounted() {

@@ -35,8 +35,12 @@ export const useUserStore = defineStore({
       }
     },
     async register(credentials){
-      const response = await axios.post('https://xpresspro-core.onrender.com/users', {user: credentials});
-      console.log(response);
+      try {
+        const response = await axios.post('https://xpresspro-core.onrender.com/users', {user: credentials});
+        return true;
+      } catch (error) {
+        return false;
+      }
     },
     logout(){
       this.setUser(null)

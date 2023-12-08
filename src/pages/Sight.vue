@@ -5,14 +5,15 @@
   <NavBar/>
   <h1>Sight-seeings Stops</h1>
 </div>
+
 <div class="outer_container">
+    <div class="stepper">
+      <Stepper :current="current"/>
+    </div>
+
   <div class="buttons">
     <vs-button color="success" @click="handleBack">Back</vs-button>
     <vs-button color="success" @click="handleNext">Next</vs-button>
-  </div>
-
-  <div class="stepper">
-    <Stepper :current="current"/>
   </div>
 
   <div class="outer">
@@ -21,7 +22,6 @@
         <SightCard :sight=sight @card-clicked="handleCardClicked" />
       </template>
     </div>
-    
 
   </div>
 </div>
@@ -33,7 +33,7 @@
   gap: 24px;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 60px 0;
+  padding: 30px 0;
   align-items: start;
 }
 
@@ -52,13 +52,12 @@ h1{
 
 
 .upper{
-  height: 300px;
   background-image: url('/images/bg.jpg');
-  padding: 0 120px;  
+  padding: 0 120px 60px 120px;
 }
 
 .outer_container {
-  padding: 30px 120px;
+  padding: 0 120px;
   background-color: aliceblue;
 
 }

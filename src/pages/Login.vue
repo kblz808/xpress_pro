@@ -35,7 +35,7 @@ export default {
   <div class="container">
     <h2>Login</h2>
 
-    <vs-input placeholder="username" v-model="email">
+    <vs-input placeholder="email" v-model="email">
       <template #icon>
         <i class="bx bx-user" />
       </template>
@@ -58,10 +58,10 @@ export default {
 <style scoped>
 .outer {
   background-image: url('/images/2.jpg');
-  padding: 0 120px 120px 120px;
+  padding: 0 120px 80px 120px;
   display: flex;
   flex-direction: column;
-  gap: 120px;
+  gap: 80px;
 }
 
 .container {

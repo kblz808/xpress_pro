@@ -4,9 +4,8 @@
   <NavBar/>
   <h1>Vehicle Fleets</h1>
 </div>
+
 <div class="outer_container">
-
-
   <div class="stepper">
     <Stepper :current="current"/>
   </div>
@@ -29,16 +28,18 @@
 
 <style scoped>
 .container {
-  padding: 80px 0;
+  padding: 30px 0;
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
+
 .buttons{
   display: flex;
   justify-content: space-between;
 }
+
 h1{
   font-size: 32px;
   color:white;
@@ -47,15 +48,13 @@ h1{
   padding-top: 30px;
 }
 
-
 .upper{
-  height: 300px;
   background-image: url('/images/bg.jpg');
-  padding: 0 120px;
-  
+  padding: 0 120px 60px 120px;
 }
+
 .outer_container {
-  padding: 30px 120px;
+  padding: 0 120px;
   background-color: aliceblue;
 }
 </style>
