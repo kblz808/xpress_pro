@@ -4,6 +4,10 @@
 <div class="outer_container">
   <NavBar/>
 
+  <div class="stepper">
+    <Stepper :current="current"/>
+  </div>
+
   <div class="outer">
     <vs-button @click="handleNext">Next</vs-button>
 
@@ -43,6 +47,7 @@
 import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
 import ApiCarCard from '../components/ApiCarCards.vue'
+import Stepper from '../components/Stepper.vue'
 
 import axios from 'axios'
 
@@ -51,11 +56,13 @@ export default {
     Banner,
     NavBar,
     ApiCarCard,
+    Stepper,
   },
   data() {
     return {
       cars: [],
       selected: '',
+      current: 3,
     }
   },
   methods: {
