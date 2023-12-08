@@ -186,10 +186,15 @@ export default {
         user: this.user_id,
         vehicle: vehicle,
       }
-
       console.log(data);
-
+      
       axios.post('https://xpresspro-core.onrender.com/journeys', data)
+        .then(res => {
+          this.$router.push({
+            name: 'completed', 
+            query: {data: JSON.stringify(data)}
+          
+        });
         .then(res => {
           console.log(res);
         })
