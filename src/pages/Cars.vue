@@ -1,15 +1,21 @@
 <template>
 <Banner/>
-
-<div class="outer_container">
+<div class="upper">
   <NavBar/>
+  <h1>Vehicle Fleets</h1>
+</div>
+<div class="outer_container">
+
 
   <div class="stepper">
     <Stepper :current="current"/>
   </div>
 
   <div class="outer">
-    <vs-button @click="handleNext">Next</vs-button>
+    <div class="buttons">
+      <vs-button color="success" @click="handleBack">Back</vs-button>
+      <vs-button color="success" @click="handleNext">Next</vs-button>
+    </div>
 
     <div class="container">
       <template v-for="car in cars">
@@ -29,17 +35,28 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
-.outer_container {
-  background: black;
-  padding: 0 120px;
+.buttons{
+  display: flex;
+  justify-content: space-between;
+}
+h1{
+  font-size: 32px;
+  color:white;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 30px;
 }
 
-.outer {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  padding: 60px 0;
+
+.upper{
+  height: 300px;
+  background-image: url('/images/bg.jpg');
+  padding: 0 120px;
+  
+}
+.outer_container {
+  padding: 30px 120px;
+  background-color: aliceblue;
 }
 </style>
 
@@ -76,6 +93,10 @@ export default {
     handleNext(){
       localStorage.setItem("selected_car", JSON.stringify(this.selected));
       this.$router.push('/additional');
+    },
+    handleBack(){
+      localStorage.setItem("selected_car", JSON.stringify(this.selected));
+      this.$router.push('/sight');
     }
   },
   mounted(){

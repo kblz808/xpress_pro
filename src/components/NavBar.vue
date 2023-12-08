@@ -14,7 +14,7 @@ export default {
         },
         handleBooking() {
             if(localStorage.getItem('token')) {
-                this.$router.push('/additional');
+                this.$router.push('/profile');
             } else {
                 this.$router.push('/login');
             }

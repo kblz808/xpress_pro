@@ -17,9 +17,9 @@
 <style scoped>
 .card {
   width: 318px;
-  background: #222222;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  color: white;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -30,12 +30,13 @@
 
 img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: contain;
 }
 
 .price {
   background: black;
+  color: white;
   padding: 6px 12px;
   display: flex;
   justify-content: start;
