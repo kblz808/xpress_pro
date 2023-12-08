@@ -5,6 +5,8 @@ import NavBar from '../components/NavBar.vue'
 import axios from 'axios'
 import {useUserStore} from '../store.js'
 
+import {VsNotification} from 'vuesax-alpha'
+
 export default {
   components: {
     Banner,
@@ -21,9 +23,23 @@ export default {
     };
   },
   methods: {
-    handleRegister() {
+    async handleRegister() {
       const userStore = useUserStore();
-      userStore.register({first_name: this.first_name, last_name: this.last_name, email: this.email, phone_number: this.phone, password: this.password, password_confirmation: this.confirm_password});
+      if(await userStore.register({first_name: this.first_name, last_name: this.last_name, email: this.email, phone_number: this.phone, password: this.password, password_confirmation: this.confirm_password}) == true){
+        this.$router.push('/login');
+      } else {
+        this.errorNotification();
+      }
+    },
+    errorNotification(){
+      VsNotification({
+        progressAuto: true,
+        icon: `<i class='bx bx-error' ></i>`,
+        position: 'top-right',
+        color: 'danger',
+        title: 'Registration Error',
+        text: 'We encountered an issue with your registration. Please check your information and try again. If the problem persists, contact support for assistance.',
+      })
     }
   }
 }
@@ -55,8 +71,8 @@ export default {
     </div>
 
     <div class="form3">
-      <vs-input v-model="password" placeholder="Password" input-style="border" />
-      <vs-input v-model="confirm_password" placeholder="Confirm Password" input-style="border" />
+      <vs-input v-model="password" placeholder="Password" input-style="border" type="password"/>
+      <vs-input v-model="confirm_password" placeholder="Confirm Password" input-style="border" type="password"/>
     </div>
 
     <vs-button @click="handleRegister">Register Now</vs-button>

@@ -4,9 +4,8 @@
   <NavBar/>
   <h1>Additional Services</h1>
 </div>
+
 <div class="outer_container">
-
-
   <div class="stepper">
     <Stepper :current="current"/>
   </div>  
@@ -56,15 +55,13 @@ h1{
   padding-top: 30px;
 }
 
-
 .upper{
-  height: 300px;
   background-image: url('/images/bg.jpg');
-  padding: 0 120px;
-  
+  padding: 0 120px 60px 120px;
 }
+
 .outer_container {
-  padding: 30px 120px;
+  padding: 0px 120px;
   background-color: aliceblue;
 }
 .buttons{
@@ -192,13 +189,13 @@ export default {
       console.log(data);
       
       axios.post('https://xpresspro-core.onrender.com/journeys', data)
-      .then(res => {
-        this.$router.push({
-          name: 'completed', 
-          query: {data: JSON.stringify(data)}
+        .then(res => {
+          this.$router.push({
+            name: 'completed', 
+            query: {data: JSON.stringify(data)}
           
-        }
-        );
+        });
+        .then(res => {
           console.log(res);
         })
         .catch(err => {
@@ -208,6 +205,16 @@ export default {
     handleBack(){
       localStorage.setItem('', JSON.stringify(this.selected));
       this.$router.push('/cars');
+    },
+    errorNotification(){
+      VsNotification({
+        progressAuto: true,
+        icon: `<i class='bx bx-error' ></i>`,
+        position: 'top-right',
+        color: 'danger',
+        title: 'Request Submission Error',
+        text: 'A problem was detected with your submission. Please ensure all required fields are filled out completely to avoid processing errors in the backend.',
+      })
     }
   }
 }
