@@ -30,12 +30,18 @@
           <div class="forms">
             <div>
               Pick Up Location
-              <vs-input v-model="pickup_location" input-style="border" placeholder="Enter your pickup location" />
+              <vs-select v-model="pickup_location" filter placeholder="Pick your pick up location">
+                <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
+                <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
+              </vs-select>
             </div>
 
             <div>
               Drop Off Location
-              <vs-input v-model="dropoff_location" input-style="border" placeholder="Enter your dropoff location" />
+              <vs-select v-model="dropoff_location" filter placeholder="Pick your drop off location">
+                <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
+                <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
+              </vs-select>
             </div>
           </div>
     
@@ -58,7 +64,7 @@
 </template>
 
 <style scoped>
-    .box {
+.box {
   background: white;
   color: #031B4E;
   padding: 30px 20px 12px 20px;
@@ -121,14 +127,34 @@ img {
 </style>
 
 <script>
-    export default {
-        data() {
+import {germanCities} from '../data.js'
+
+export default {
+  data() {
     return {
       car_clicked: '',
       pickup_location: "",
       dropoff_location: "",
       pickup_date: "",
       time: "",
+      cities: germanCities,
+      showError: false,
+    }
+  },
+  watch: {
+    dropoff_location() {
+      if(this.dropoff_location == this.pickup_location){
+        this.showError = true;
+      } else {
+        this.showError = false;
+      }
+    },
+    pickup_location(){
+      if(this.dropoff_location == this.pickup_location){
+        this.showError = true;
+      } else {
+        this.showError = false;
+      }
     }
   },
   methods: {
@@ -148,5 +174,5 @@ img {
       this.$router.push('/sight');
     }
   },
-    }
+}
 </script>
