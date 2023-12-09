@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <vs-button color="success" @click="rentClicked"><router-link to="/sight">Rent Now</router-link></vs-button>
+      <vs-button size="large" color="success" @click="rentClicked"><router-link to="/sight">Search</router-link></vs-button>
     </div>
 
 </template>
