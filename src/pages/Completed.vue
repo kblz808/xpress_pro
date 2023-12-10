@@ -26,12 +26,12 @@
             <div class="text">
                 
                  <h2>Pickup Date</h2>
-                 <h1>{{ data1.date.toUpperCase() }}</h1>
+                 <h1>{{ data1.date }}</h1>
 
             </div>
             <div class="text">
                 <h2>Pickup Time</h2>
-                <h1>{{ data1.time.toUpperCase() }}</h1>
+                <h1>{{ data1.time}}</h1>
 
             </div>
             <div class="text">
@@ -42,8 +42,13 @@
             <div class="text">
                 <h2>Sightseeing Stops</h2>
                 <h1 v-for="stop in data1.stop">{{stop.location.toUpperCase() }}</h1>
-                </div>
+            </div>
+            <div class="text">
+                <h2>Sightseeing Stops Price</h2>
+                <h1 v-for="stop in data1.stop">{{stop.price_per_hour }}</h1>
                 
+            </div>
+            Go to <router-link to="/payment"> <strong>Payment</strong> </router-link>
         </div>
         <div v-else>
             No data
@@ -98,6 +103,17 @@
         width: 800px;
         align-self: center;
     }
+    button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 10px;
+        background-color: limegreen;
+        color: white;
+        cursor: pointer;
+    } 
+    strong{
+        color: limegreen;
+    }
 </style>
 
 <script>
@@ -128,6 +144,7 @@
             console.log("origin",this.data1.origin1);
             console.log("destination",this.data1.destination1);
             console.log("car", this.data1.car);
+            console.log('Sightprice:', data.list_of_Sightseeing);
         },
         data(){
             return{
