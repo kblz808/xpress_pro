@@ -42,7 +42,7 @@
 
 <style scoped>
     .container {
-        background-color: #121212;
+        background-color: rgb(242, 255, 240);
         height: 900px;
         display: flex;
         align-items: center;
@@ -63,6 +63,7 @@
         display: flex;
         flex-direction: column;
         transition: transform .4s;
+        box-shadow: 0px 4px 8px rgba(1, 10, 0, 0.8);
     }
     .feedback-1:hover {
         transform: scale(1.1);
@@ -77,7 +78,7 @@
         display: flex;
         flex-direction: column;
         transition: transform .4s;
-
+        box-shadow: 0px 4px 8px rgba(1, 17, 0, 0.8);
     }
     .feedback-2:hover {
         transform: scale(1.1);
@@ -92,7 +93,7 @@
         display: flex;
         flex-direction: column;
         transition: transform .4s;
-
+        box-shadow: 0px 4px 8px rgba(1, 10, 0, 0.8);
     }
     .feedback-3:hover {
         transform: scale(1.1);

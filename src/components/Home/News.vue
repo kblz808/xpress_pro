@@ -12,7 +12,7 @@
                 <div class="info">
                     <h2>Enjoy Best Travel Experience</h2>
                     <h3>Traveling is an enriching experience that<br/> allows us to explore new destinations,<br/> immerse ourselves in different cultures,<br/> and create lifelong memories.</h3>
-                    <vs-button type="border" color="#fff">Read More </vs-button>
+                    <vs-button type="border" color="#000">Read More </vs-button>
                 </div>
             </div>
             <div class="news">
@@ -20,7 +20,7 @@
                 <div class="info">
                     <h2>Enjoy Best Travel Experience</h2>
                     <h3>Traveling is an enriching experience that<br/> allows us to explore new destinations,<br/> immerse ourselves in different cultures,<br/> and create lifelong memories.</h3>
-                    <vs-button type="border" color="#fff">Read More </vs-button>
+                    <vs-button type="border" color="#000">Read More </vs-button>
                 </div>
             </div>
             <div class="news">
@@ -28,7 +28,7 @@
                 <div class="info">
                     <h2>Enjoy Best Travel Experience</h2>
                     <h3>Traveling is an enriching experience that<br/> allows us to explore new destinations,<br/> immerse ourselves in different cultures,<br/> and create lifelong memories.</h3>
-                    <vs-button type="border" color="#fff">Read More </vs-button>
+                    <vs-button type="border" color="#000">Read More </vs-button>
                 </div>
             </div>
         </div>
@@ -38,11 +38,11 @@
 <style scoped>
   .container {
     height: 800px;
-    background-color: #121212;
+    background-color: white;
     padding-top: 40px;
   }
   .text {
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,7 +52,7 @@
     width: 700px;
     word-wrap: break-word;
     text-align: center;
-    color: lightgray;
+    color: darkslategray;
   }
   .text h1 {
     font-size: 38px;
@@ -61,14 +61,14 @@
 
   .enjoy {
     padding: 8px;
-    background: #333333;
+    background: #525252;
     color: #1ecb15;
     font-weight: 800;
     font-size: 16px;
     border-radius: 4px;
   }
   h1{
-    color: white;
+    color: black;
   }
   img{
     height: 300px;
@@ -81,6 +81,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
   .news-container{
     padding: 45px 120px;
@@ -92,10 +96,11 @@
     height: 1300px;
     padding: 30px;
     border-radius: 12px;
-    background-color: #121212;
+    background: rgb(242, 255, 240);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     top: -50px;
-    color: white;
+    color: black;
   }
 
   h2{
@@ -105,7 +110,7 @@
   }
   h3{
     font-size: 16px;
-    color: lightgray;
+    color: darkslategray;
     padding-bottom: 10px;
   }
 </style>

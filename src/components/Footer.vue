@@ -69,9 +69,9 @@
 
 <style scoped>
     .container {
-        background-color: #1a1919;
+        background-color: rgb(240, 255, 240);
         height: 460px;
-        color: lightgray;
+        color: darkslategray;
         padding: 50px 120px;
         display: flex;
         flex-direction: column;
@@ -96,6 +96,8 @@
         gap: 15px;
     }
     h3{
+        font-size: large;
+        font-weight: 800;
         color: #1ecb15;
     }
 </style>

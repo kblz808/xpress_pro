@@ -21,8 +21,8 @@
 <style scoped>
   .banner {
     width: 100%;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
