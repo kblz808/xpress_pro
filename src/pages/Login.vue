@@ -11,6 +11,7 @@ export default {
     return {
       email: '',
       password: '',
+      isLoading: false,
     };
   },
   components: {
@@ -19,10 +20,12 @@ export default {
   },
   methods: {
     async handleSubmit(){
+      this.isLoading = true;
       const userStore = useUserStore();
       if(await userStore.login({email: this.email,  password: this.password})){
         this.$router.push('/dashboard');
       } else {
+        this.isLoading = false;
         this.errorNotification();
       }
     },
