@@ -20,30 +20,34 @@ import Blog from './pages/Blog.vue'
 import CarDialog from './pages/CarDialog.vue'
 import Completed from './pages/Completed.vue'
 import Payment from './pages/Payment.vue'
+import NewSight from './pages/NewSight.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 import './index.css'
 
 const routes = [
   {path: '/', component: Home},
-  {path: '/dashboard', component: Dashboard, meta: {requiresAuth: true}},
-  {path: '/profile', component: Profile, meta: {requiresAuth: true}},
-  {path: '/myorders', component: MyOrders, meta: {requiresAuth: true}},
-  {path: '/myfavorite', component: MyFavorite, meta: {requiresAuth: true}},
-  {path: '/journey', component: Journey, meta: {requiresAuth: true}},
-  {path: '/sight', component: Sight, meta: {requiresAuth: true}},
-  {path: '/cars', component: Cars, meta: {requiresAuth: true}},
-  {path: '/additional', component: AdditionalService, meta: {requiresAuth: true}},
+  {path: '/dashboard', component: Dashboard, meta: {requiresAuth: false}},
+  {path: '/profile', component: Profile, meta: {requiresAuth: false}},
+  {path: '/myorders', component: MyOrders, meta: {requiresAuth: false}},
+  {path: '/myfavorite', component: MyFavorite, meta: {requiresAuth: false}},
+  {path: '/journey', component: Journey, meta: {requiresAuth: false}},
+  {path: '/sight', component: NewSight, meta: {requiresAuth: false}},
+  {path: '/cars', component: Cars, meta: {requiresAuth: false}},
+  {path: '/additional', component: AdditionalService, meta: {requiresAuth: false}},
   {path: '/register', component: Register},
   {path: '/login', component: Login},
   {path: '/cars_filter', component: CarsFilter},
   {path: '/blog', component: Blog},
-  {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true},
+  {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: false},
   {path: '/completed', name: 'completed', component: Completed},
   {path: '/cars_filter', component: CarsFilter, meta: {requiresAuth: true}},
   {path: '/blog', component: Blog, meta: {requiresAuth: true}},
   {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true, meta: {requiresAuth: true}},
   {path: '/payment', name: 'payment', component: Payment},
+  {path: '/cars_filter', component: CarsFilter, meta: {requiresAuth: false}},
+  {path: '/blog', component: Blog, meta: {requiresAuth: false}},
+  {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true, meta: {requiresAuth: false}},
 ]
 
 const router = createRouter({
