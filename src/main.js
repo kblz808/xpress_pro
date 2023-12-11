@@ -19,6 +19,7 @@ import CarsFilter from './pages/CarsFilter.vue'
 import Blog from './pages/Blog.vue'
 import CarDialog from './pages/CarDialog.vue'
 import Completed from './pages/Completed.vue'
+import NewSight from './pages/NewSight.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 import './index.css'
@@ -30,7 +31,7 @@ const routes = [
   {path: '/myorders', component: MyOrders, meta: {requiresAuth: false}},
   {path: '/myfavorite', component: MyFavorite, meta: {requiresAuth: false}},
   {path: '/journey', component: Journey, meta: {requiresAuth: false}},
-  {path: '/sight', component: Sight, meta: {requiresAuth: false}},
+  {path: '/sight', component: NewSight, meta: {requiresAuth: false}},
   {path: '/cars', component: Cars, meta: {requiresAuth: false}},
   {path: '/additional', component: AdditionalService, meta: {requiresAuth: false}},
   {path: '/register', component: Register},
