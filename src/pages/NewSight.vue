@@ -41,6 +41,8 @@ export default {
       dropoff_location: '',
       pickup_date: '',
       time: '',
+
+      seat_count: 0,
     }
   },
   mounted() {
@@ -68,9 +70,32 @@ export default {
   },
   methods: {
     handleAdditional(){
-      this.show_sights = false;
-      this.current = 3;
-      this.show_additional = true;
+      if(this.show_additional){
+        const data = {
+          origin: this.pickup_location,
+          destination: this.dropoff_location,
+          Departure_Date: this.pickup_date,
+          Departure_time: this.time,
+          list_of_Sightseeing: this.selectedSights,
+          user_id: 1,
+          vehicle_id: this.selected_car.id,
+          driver_id: 1,
+        }
+
+        console.log(data);
+
+        axios.post('https://xpresspro-core.onrender.com/journeys', {payload: data})
+          .then(res => {
+            console.log(res);
+            //this.$router.push({name: 'completed', query: {data: JSON.stringify(data)}});
+          })
+          .catch(err => console.error(err));
+        
+      } else {
+        this.show_sights = false;
+        this.current = 3;
+        this.show_additional = true;
+      }
     },
     handleCarSelected(car) {
       this.selected_car = car;
@@ -97,8 +122,19 @@ export default {
         this.sight_selected = false;
       }
       console.log(this.selectedSights);
+    },
+    addSeat(){
+      this.seat_count += 1;
+    },
+    minusSeat(){
+      if(this.seat_count <= 0){
+        return;
+      }else {
+        this.seat_count -= 1
+      }
     }
-  }
+    
+  },
 }
 </script>
 
@@ -129,21 +165,19 @@ export default {
     </template>
 
     <template v-if="show_additional">
-      <div class="add_container">
-        <div class="add_left">
-          <div class="image_container">
-            <img src="/images/child_seat.png" />
-          </div>
+      <div class="add_left">
+        <div class="image_container">
+          <img src="/images/child_seat.png" />
+        </div>
 
-          <div class="seat_tools">
-            <vs-button @click="remove"><i class='bx bx-minus'></i></vs-button>
-            <div class="count">{{count}}</div>
-            <vs-button @click="add"><i class='bx bx-plus'></i></vs-button>
-          </div>
+        <div class="seat_tools">
+          <vs-button @click="minusSeat" icon><i class='bx bx-minus'></i></vs-button>
+          <div class="count">{{seat_count}}</div>
+          <vs-button @click="addSeat" icon><i class='bx bx-plus'></i></vs-button>
+        </div>
 
-          <p>number of child seat</p>
-        </div>  
-      </div>
+        <p>number of child seat</p>
+      </div>  
     </template>
   </div>
 
@@ -219,13 +253,7 @@ export default {
 .seat_tools {
   display: flex;
   justify-content: space-between;
-}
-
-.add_container {
-  padding-top: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .add_left {
@@ -239,7 +267,7 @@ export default {
   border-radius: 32px;
 }
 
-.add_container img {
+.add_left img {
   width: 200px;
   height: auto;
 }
