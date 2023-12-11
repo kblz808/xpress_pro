@@ -2,6 +2,7 @@
 import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
 import NewSightCard from '../components/NewSightCard.vue'
+import NewCarCard from '../components/NewCarCard.vue'
 
 import Stepper from '../components/Stepper.vue'
 
@@ -13,17 +14,40 @@ export default {
     NavBar,
     NewSightCard,
     Stepper,
+    NewCarCard,
   },
 
   data() {
     return {
+      show_cars: true,
+      show_sights: false,
+
+      cars: [],
       sights: [],
       selectedSights: [],
       current: 2,
+      
+      pickup_location: '',
+      dropoff_location: '',
+      pickup_date: '',
+      time: '',
     }
   },
-
   mounted() {
+    const journey = JSON.parse(localStorage.getItem("journey"));
+    this.pickup_location = journey.pickup_location;
+    this.dropoff_location = journey.dropoff_location;
+    this.pickup_date = journey.pickup_date;
+    this.time = journey.time;
+
+    axios.get('https://xpresspro-core.onrender.com/vehicles')
+      .then(res => {
+        this.cars= res.data.data;
+      })
+      .catch(err => {
+        console.error(err);
+      })
+    
     axios.get('https://xpresspro-core.onrender.com/sightseeings')
       .then(res => {
         this.sights = res.data.data;
@@ -40,14 +64,6 @@ export default {
         this.selectedSights = this.selectedSights.filter(s => sight.id != s.id);
       }
     },
-    handleNext(){
-      localStorage.setItem("sights", JSON.stringify(this.selectedSights));
-      this.$router.push('/cars');
-    },
-    handleBack(){
-      localStorage.setItem("sights", JSON.stringify(this.selectedSights));
-      this.$router.push('/journey');
-    }
   }
 }
 </script>
@@ -64,14 +80,21 @@ export default {
 
   <div class="container">  
     <h2>Visit these sights along the way</h2>
-    <template v-for="sight in sights">
+
+    
+    <template v-for="sight in sights" v-if="show_sights">
       <NewSightCard :sight=sight @card-clicked="handleCardClicked" />
+    </template>
+
+    <template v-for="car in cars" v-if="show_cars">
+      <NewCarCard :car="car" />
     </template>
   </div>
 
   <div class="right">
+
     <div class="top">
-      <h2>Route</h2>
+      <h2 class="title">Route</h2>
 
       <div class="locations">
         <vs-select v-model="pickup_location" filter placeholder="Pick your pick up location">
@@ -94,6 +117,20 @@ export default {
     </div>
 
     <hr/>
+
+    <div class="middle">
+      <h2 class="title">Your ride</h2>
+
+      <div class="vehicle">
+        <img src=""/>
+
+        <div class="vehivle_info">
+
+        </div>
+      </div>
+    </div>
+
+    <hr/>
     
   </div>
 
@@ -109,7 +146,6 @@ export default {
 .locations {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .top {
@@ -120,7 +156,16 @@ export default {
   align-items: space-between;
 }
 
-.top h2 {
+.middle {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: space-between;
+}
+
+
+.title {
   font-size: 36px;
   font-weight: 600;
   align-self: start;

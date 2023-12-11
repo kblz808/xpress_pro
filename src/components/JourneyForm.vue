@@ -163,7 +163,7 @@ export default {
     },
     rentClicked(){
       const journey = {
-        car_pickeed: this.car_picked,
+        car_picked: this.car_picked,
         pickup_location: this.pickup_location,
         dropoff_location: this.dropoff_location,
         pickup_date: this.pickup_date,

@@ -50,11 +50,12 @@ button {
 .add {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .buttons {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   align-items: center;
   padding: 12px;
   background: white;
@@ -62,7 +63,7 @@ button {
 }
 
 .buttons h4 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 
