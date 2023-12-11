@@ -3,20 +3,36 @@ export default {
   props: ['sight'],
   methods: {
     emitClicked(){
+      this.sight.time_spent = this.stop_minutes;
       if(this.clicked) {
-        this.$emit('card-clicked', this.sight, false);
+        this.$emit('card_clicked', this.sight, true);
         this.clicked = false;
+        this.color = 'primary';
       } else {
-        this.$emit('card-clicked', this.sight, true);
+        this.$emit('card_clicked', this.sight, false);
         this.clicked = true;
+        this.color = 'warn';
       }
     },
+    minus() {
+      if(this.stop_minutes <= 30) {
+        return;
+      } else {
+        this.stop_minutes -= 30;
+        this.price /= 1.5;
+      }
+    },
+    add() {
+      this.stop_minutes += 30;
+      this.price *= 1.5;
+    }
   },
   data(){
     return {
       clicked: false,
-      stop_minutes: 75,
-      price: 51,
+      stop_minutes: 30,
+      price: 20,
+      color: 'primary',
     }
   }
 }
@@ -32,11 +48,11 @@ export default {
 
   <div class="add">
     <div class="buttons">
-      <vs-button icon><i class='bx bx-minus'></i></vs-button>
+      <vs-button icon @click="minus"><i class='bx bx-minus'></i></vs-button>
       <h4>{{stop_minutes}} min stop</h4>
-      <vs-button icon><i class='bx bx-plus'></i></vs-button>
+      <vs-button icon @click="add"><i class='bx bx-plus'></i></vs-button>
     </div>
-    <vs-button :active="clicked" @click="emitClicked(sight.id)" size='large'>Add for ${{price}}</vs-button>
+    <vs-button :active="clicked" @click="emitClicked(sight.id)" size='large' :color="color"><template v-if="!clicked">Add for<strong>${{price}}</strong></template> <template v-if="clicked">Cancel</template></vs-button>
   </div>
 
 </div>
@@ -45,6 +61,11 @@ export default {
 <style scoped>
 button {
   flex-grow: 1;
+}
+
+.add strong {
+  font-weight: 700;
+  font-size: 18px;
 }
 
 .add {

@@ -5,6 +5,8 @@ import NewSightCard from '../components/NewSightCard.vue'
 import NewCarCard from '../components/NewCarCard.vue'
 import Stepper from '../components/Stepper.vue'
 
+import {germanCities} from '../data.js'
+
 import axios from 'axios';
 
 export default {
@@ -18,17 +20,22 @@ export default {
 
   data() {
     return {
+      cities: germanCities,
       current: 1,
-    
+
       show_cars: true,
       show_sights: false,
+      show_additional: false,
 
       car_selected: false,
+      sight_selected: false,
 
       cars: [],
       sights: [],
       selectedSights: [],
       selected_car: null,
+
+      total_price: 0,
       
       pickup_location: '',
       dropoff_location: '',
@@ -60,19 +67,36 @@ export default {
       })
   },
   methods: {
-    handleCardClicked(sight, value) {
-      if(value) {
-        this.selectedSights.push(sight);
-      } else {
-        this.selectedSights = this.selectedSights.filter(s => sight.id != s.id);
-      }
+    handleAdditional(){
+      this.show_sights = false;
+      this.current = 3;
+      this.show_additional = true;
     },
     handleCarSelected(car) {
       this.selected_car = car;
+      this.total_price = car.price_per_day;
       this.show_cars = false;
       this.current = 2;
       this.show_sights = true;
       this.car_selected = true;
+
+      console.log(this.selected_car);
+    },
+    handleSightSelected(sight, selected) {
+      if(selected){
+        this.total_price -= (sight.time_spent * 1.5) * 20;
+        this.selectedSights = this.selectedSights.filter(s => sight.id != s.id);
+      } else {
+        this.total_price += (sight.time_spent * 1.5) * 20;
+        this.selectedSights.push(sight);
+      }
+
+      if(this.selectedSights.length > 0) {
+        this.sight_selected = true;
+      } else {
+        this.sight_selected = false;
+      }
+      console.log(this.selectedSights);
     }
   }
 }
@@ -97,11 +121,29 @@ export default {
 
     
     <template v-for="sight in sights" v-if="show_sights">
-      <NewSightCard :sight=sight @card-clicked="handleCardClicked" />
+      <NewSightCard :sight=sight @card_clicked="handleSightSelected" @price_update="handlePriceChange"/>
     </template>
 
     <template v-for="car in cars" v-if="show_cars">
       <NewCarCard :car="car" @selected="handleCarSelected" />
+    </template>
+
+    <template v-if="show_additional">
+      <div class="add_container">
+        <div class="add_left">
+          <div class="image_container">
+            <img src="/images/child_seat.png" />
+          </div>
+
+          <div class="seat_tools">
+            <vs-button @click="remove"><i class='bx bx-minus'></i></vs-button>
+            <div class="count">{{count}}</div>
+            <vs-button @click="add"><i class='bx bx-plus'></i></vs-button>
+          </div>
+
+          <p>number of child seat</p>
+        </div>  
+      </div>
     </template>
   </div>
 
@@ -136,15 +178,37 @@ export default {
       <h2 class="title">Your ride</h2>
 
       <div class="vehicle">
-        <img src=""/>
+        <img :src="selected_car.sideview"/>
 
-        <div class="vehivle_info">
+        <div class="info">
+          <h3>{{selected_car.vehicle_model}}</h3>
 
+          <div class="text">
+            <div class="small_info first">
+              <p>Comparable to a</p>
+              <h5>Volkswagen Passat</h5>
+            </div>
+          
+            <div class="small_info first">
+              <p>Passengers</p>
+              <i class='bx bx-group'></i> {{selected_car.person_capacity}}
+            </div>
+
+            <div class="small_info second">
+              <p>Luggage</p>
+              <i class='bx bxs-backpack'></i> {{selected_car.luggage_capacity}}x
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>
 
     <hr/>
+
+    <template v-if="car_selected">
+      <vs-button @click="handleAdditional" size="large">Book your trip for ${{total_price}}</vs-button>
+    </template>
     
   </div>
 
@@ -152,6 +216,71 @@ export default {
 </template>
 
 <style scoped>
+.seat_tools {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add_container {
+  padding-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add_left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 450px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 36px;
+  border-radius: 32px;
+}
+
+.add_container img {
+  width: 200px;
+  height: auto;
+}
+
+.small_info p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.small_info h5 {
+  font-size: 12px;
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.vehicle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vehicle img {
+  width: 120px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
 .stepper {
   padding: 24px 80px;
 }
