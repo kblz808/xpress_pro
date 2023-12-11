@@ -1,7 +1,6 @@
 <script>
   export default {
     props: ['car'],
-    expose: ['childMethod'],
     data(){
       return {
         selected: false,
@@ -9,17 +8,9 @@
     },
     methods: {
       carSelected(){
-        this.$emit('selected', this.car.id);
+        this.selected = true;
+        this.$emit('selected', this.car);
       },
-      childMethod(carId){
-        if(!this.selected && (carId) == this.car.id) {
-          this.selected = true;
-        } else if (this.selected && (carId) != this.car.id) {
-          this.selected = false;
-        } else if (this.selected && (carId) == this.car.id) {
-          this.selected = false;
-        }
-      }
     },
   }
 </script>

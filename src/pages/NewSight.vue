@@ -3,7 +3,6 @@ import Banner from '../components/Banner.vue'
 import NavBar from '../components/NavBar.vue'
 import NewSightCard from '../components/NewSightCard.vue'
 import NewCarCard from '../components/NewCarCard.vue'
-
 import Stepper from '../components/Stepper.vue'
 
 import axios from 'axios';
@@ -19,13 +18,17 @@ export default {
 
   data() {
     return {
+      current: 1,
+    
       show_cars: true,
       show_sights: false,
+
+      car_selected: false,
 
       cars: [],
       sights: [],
       selectedSights: [],
-      current: 2,
+      selected_car: null,
       
       pickup_location: '',
       dropoff_location: '',
@@ -64,6 +67,13 @@ export default {
         this.selectedSights = this.selectedSights.filter(s => sight.id != s.id);
       }
     },
+    handleCarSelected(car) {
+      this.selected_car = car;
+      this.show_cars = false;
+      this.current = 2;
+      this.show_sights = true;
+      this.car_selected = true;
+    }
   }
 }
 </script>
@@ -74,6 +84,10 @@ export default {
 <div class="upper">
   <NavBar/>
   <h1>Sight-seeings Stops</h1>
+</div>
+
+<div class="stepper">
+  <Stepper :current="current" @selected="stepper_selected" />
 </div>
 
 <div class="outer_container">
@@ -87,7 +101,7 @@ export default {
     </template>
 
     <template v-for="car in cars" v-if="show_cars">
-      <NewCarCard :car="car" />
+      <NewCarCard :car="car" @selected="handleCarSelected" />
     </template>
   </div>
 
@@ -118,7 +132,7 @@ export default {
 
     <hr/>
 
-    <div class="middle">
+    <div class="middle" v-if="car_selected">
       <h2 class="title">Your ride</h2>
 
       <div class="vehicle">
@@ -138,6 +152,10 @@ export default {
 </template>
 
 <style scoped>
+.stepper {
+  padding: 24px 80px;
+}
+
 .time {
   display: flex;
   justify-content: space-between;
@@ -166,7 +184,7 @@ export default {
 
 
 .title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 600;
   align-self: start;
 }
