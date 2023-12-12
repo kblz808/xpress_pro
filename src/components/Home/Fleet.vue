@@ -19,7 +19,7 @@
 <style scoped>
   .container {
     padding: 42px 0;
-    background: #121212;
+    background: white;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@
   }
 
   .text {
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,7 +58,7 @@
 
   .enjoy {
     padding: 8px;
-    background: #333333;
+    background: #525252;
     color: #1ecb15;
     font-weight: 800;
     font-size: 16px;

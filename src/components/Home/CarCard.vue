@@ -42,9 +42,11 @@
 .card {
   width: 318px;
   height: 358px;
-  background: #222222;
+  background: rgb(242, 255, 240);
   padding: 16px;
-  color: white;
+  color: black;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
   display: flex;
   flex-direction: column;
   border-radius: 10px;

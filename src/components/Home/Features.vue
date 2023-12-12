@@ -49,10 +49,10 @@
 <style scoped>
     .container {
         height: 700px;
-        background-color: #121212;
+        background-color: white;
     }
     .text {
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +62,7 @@
     width: 700px;
     word-wrap: break-word;
     text-align: center;
-    color: lightgray;
+    color: darkslategray;
   }
   .text{
     padding-top: 40px;
@@ -75,30 +75,33 @@
 
   .enjoy {
     padding: 8px;
-    background: #333333;
+    background: #525252;
     color: #1ecb15;
     font-weight: 800;
     font-size: 16px;
     border-radius: 4px;
   }
   h1{
-    color: white;
+    color: black;
   }
   h3{
     font-weight: 900;
     font-size: 20px;
   }
   h4{
-    color: lightgray;
+    color: darkslategray;
   }
   h5{
     text-align: end;
-    color: lightgray;
+    color: darkslategray;
 
   }
   
   img{
     height: 350px;
+  }
+  i{
+    color: white;
   }
 
   .features-container{
@@ -123,7 +126,7 @@
     gap: 3px;
   }
   .feature{
-    color: aliceblue;
+    color: black;
     display: flex;
     gap: 20px;
   }
