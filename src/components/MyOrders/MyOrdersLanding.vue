@@ -19,7 +19,7 @@
             <div class="orders">
                 <p>Scheduled</p>
 
-                <MyOrdersTable :status="'Scheduled'" :orders="orders" />
+                <MyOrdersTable :status="'Scheduled'" :orders="scheduledJourneys" />
             </div>
         </div>
     </div>
@@ -69,14 +69,29 @@
     import MyOrdersTable from './MyOrdersTable.vue'
     import { ordersData } from '../../data.js'
 
+    import axios from 'axios';
+
     export default {
         data() {
             return {
                 orders: ordersData,
                 activeMenu: 'orders', 
+                journeys: [],
+                scheduledJourneys: [],
             }
         },
-        
+        mounted() {
+            axios.get('https://xpresspro-core.onrender.com/journeys')
+                .then(res => {
+                    this.journeys = res.data.data;
+                    const user = JSON.parse(localStorage.getItem("user"));
+                    this.scheduledJourneys = this.journeys.filter(journey => {
+                        return journey.user_id == user.id;
+                    })
+                    console.log(this.scheduledJourneys);
+                })
+                .catch(err => console.error(err));
+        },
         methods: {
             handleMenuClick(menu){
                 this.activeMenu = menu;
