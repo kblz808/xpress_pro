@@ -20,14 +20,17 @@ export default {
       confirm_password: '',
       email: '',
       phone: '',
+      isLoading: false,
     };
   },
   methods: {
     async handleRegister() {
+      this.isLoading = true;
       const userStore = useUserStore();
       if(await userStore.register({first_name: this.first_name, last_name: this.last_name, email: this.email, phone_number: this.phone, password: this.password, password_confirmation: this.confirm_password}) == true){
         this.$router.push('/login');
       } else {
+        this.isLoading = false;
         this.errorNotification();
       }
     },
@@ -75,7 +78,7 @@ export default {
       <vs-input v-model="confirm_password" placeholder="Confirm Password" input-style="border" type="password"/>
     </div>
 
-    <vs-button @click="handleRegister">Register Now</vs-button>
+    <vs-button @click="handleRegister" :loading="isLoading">Register Now</vs-button>
   </div>
 </div>
 

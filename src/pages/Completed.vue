@@ -46,7 +46,6 @@
             <div class="text">
                 <h2>Sightseeing Stops Price</h2>
                 <h1 v-for="stop in data1.stop">{{stop.price_per_hour }}</h1>
-                
             </div>
         </div>
         <div v-else>

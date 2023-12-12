@@ -5,6 +5,10 @@ import NewSightCard from '../components/NewSightCard.vue'
 import NewCarCard from '../components/NewCarCard.vue'
 import Stepper from '../components/Stepper.vue'
 
+import {VueSpinnerOrbit} from 'vue3-spinners';
+
+import {VsNotification} from 'vuesax-alpha'
+
 import {germanCities} from '../data.js'
 
 import axios from 'axios';
@@ -16,6 +20,7 @@ export default {
     NewSightCard,
     Stepper,
     NewCarCard,
+    VueSpinnerOrbit,
   },
 
   data() {
@@ -43,6 +48,10 @@ export default {
       time: '',
 
       seat_count: 0,
+
+      isLoading: false,
+
+      show_text: 'Select Your Preferred Vehicle',
     }
   },
   mounted() {
@@ -52,9 +61,12 @@ export default {
     this.pickup_date = journey.pickup_date;
     this.time = journey.time;
 
+    this.isLoading = true;
+
     axios.get('https://xpresspro-core.onrender.com/vehicles')
       .then(res => {
         this.cars= res.data.data;
+        this.isLoading = false;
       })
       .catch(err => {
         console.error(err);
@@ -69,8 +81,24 @@ export default {
       })
   },
   methods: {
+    handleSwitch() {
+      const pickup = this.pickup_location;
+      this.pickup_location = this.dropoff_location;
+      this.dropoff_location = pickup;
+    },
+    errorNotification(){
+      VsNotification({
+        progressAuto: true,
+        icon: `<i class='bx bx-error' ></i>`,
+        position: 'top-right',
+        color: 'danger',
+        title: 'Wei\'re sorry, something went wrong.',
+        text: 'There was an error while sending your journey data. Please check your internet connection and try again. If the problem persists, contact our support team at support@xpresspor.com.',
+      })
+    },
     handleAdditional(){
       if(this.show_additional){
+        this.isLoading = true;
         const data = {
           origin: this.pickup_location,
           destination: this.dropoff_location,
@@ -80,6 +108,13 @@ export default {
           user_id: 1,
           vehicle_id: this.selected_car.id,
           driver_id: 1,
+        }
+
+        const user = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        if(token && user){
+          const id = JSON.parse(user).id;
+          data.user_id = id;
         }
 
         localStorage.setItem("data", JSON.stringify(data));
@@ -92,7 +127,11 @@ export default {
             console.log(res);
             this.$router.push('/payment');
           })
-          .catch(err => console.error(err));
+          .catch(err => {
+            this.errorNotification();
+            console.error(err);
+            this.isLoading = false;
+          });
         
       } else {
         this.show_sights = false;
@@ -101,14 +140,17 @@ export default {
       }
     },
     handleCarSelected(car) {
+      this.isLoading = true;
       this.selected_car = car;
       this.total_price = car.price_per_day;
       this.show_cars = false;
       this.current = 2;
       this.show_sights = true;
       this.car_selected = true;
+      this.show_text = "Visit these sights along the way";
 
       console.log(this.selected_car);
+      this.isLoading = false;
     },
     handleSightSelected(sight, selected) {
       if(selected){
@@ -136,7 +178,6 @@ export default {
         this.seat_count -= 1
       }
     }
-    
   },
 }
 </script>
@@ -144,6 +185,7 @@ export default {
 <template>
 <Banner/>
 
+<div class="cover">
 <div class="upper">
   <NavBar/>
   <h1>Sight-seeings Stops</h1>
@@ -156,16 +198,21 @@ export default {
 <div class="outer_container">
 
   <div class="container">  
-    <h2>Visit these sights along the way</h2>
+    <h2>{{show_text}}</h2>
 
+    <div class="load" v-if="isLoading">
+      <VueSpinnerOrbit size="100" color="blue"/>
+    </div>
     
     <template v-for="sight in sights" v-if="show_sights">
       <NewSightCard :sight=sight @card_clicked="handleSightSelected" @price_update="handlePriceChange"/>
     </template>
 
-    <template v-for="car in cars" v-if="show_cars">
-      <NewCarCard :car="car" @selected="handleCarSelected" />
-    </template>
+    <div class="car_list">
+      <template v-for="car in cars" v-if="show_cars">
+        <NewCarCard :car="car" @selected="handleCarSelected" />
+      </template>
+    </div>
 
     <template v-if="show_additional">
       <div class="add_left">
@@ -195,7 +242,7 @@ export default {
           <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
         </vs-select>
 
-        <vs-button icon><i class='bx bx-transfer-alt'></i></vs-button>
+        <vs-button icon @click="handleSwitch"><i class='bx bx-transfer-alt'></i></vs-button>
 
         <vs-select v-model="dropoff_location" filter placeholder="Pick your drop off location">
           <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
@@ -250,9 +297,28 @@ export default {
   </div>
 
 </div>
+</div>
 </template>
 
 <style scoped>
+.load {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.car_list {
+  display:flex;
+  flex-wrap:wrap;
+  gap: 24px;
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+}
+
 .seat_tools {
   display: flex;
   justify-content: space-between;
@@ -390,7 +456,7 @@ h1{
 
 .outer_container {
   padding: 40px 80px;
-  background-color: aliceblue;
+  background: aliceblue;
   display: flex;
   gap: 32px;
   align-items: start;

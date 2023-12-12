@@ -873,6 +873,11 @@ color-name@1.1.3:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   integrity sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==
 
+colornames@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/colornames/-/colornames-1.1.1.tgz#f8889030685c7c4ff9e2a559f5077eb76a816f96"
+  integrity sha512-/pyV40IrsdulWv+wFPmERh9k/mjsPZ64yUMDmWrtj/k1nmgrzzIENWKdaVKyBbvFdQWqkcaRxr+polCo3VMe7A==
+
 combined-stream@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
@@ -1123,6 +1128,16 @@ json-parse-even-better-errors@^2.3.0:
   resolved "https://registry.yarnpkg.com/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz#7c47805a94319928e05777405dc12e1f7a4ee02d"
   integrity sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==
 
+just-range@^4.0.1:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/just-range/-/just-range-4.2.0.tgz#34d901f76b2d0ce3a0d2c98cb691b06303945122"
+  integrity sha512-z2Ip8H2j7a9Vr8rKFi0IZf4IXn2Yuq2lGZFS41GjfPwksoHWTaTx1xIjU6C0HyQ1jBXEoz/FzjS5eyVXeW19tg==
+
+just-zip-it@^3.0.2:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/just-zip-it/-/just-zip-it-3.2.0.tgz#76185e513aeab5519fb06d68460a54cefcb37b6a"
+  integrity sha512-ZJxc8mLz8XkaoOegJ237Xuo3ZQB5zUN/8BTXqalBJbh/uj+ahfJbOJKadJPmXDBbxHzh+MQYH43VxV5TlQvlfw==
+
 keyv@^4.0.0:
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-4.5.4.tgz#a879a99e29452f942439f2a405e3af8b31d4de93"
@@ -1235,6 +1250,11 @@ opencollective-postinstall@^2.0.3:
   resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
   integrity sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==
 
+outdent@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/outdent/-/outdent-0.8.0.tgz#2ebc3e77bf49912543f1008100ff8e7f44428eb0"
+  integrity sha512-KiOAIsdpUTcAXuykya5fnVVT+/5uS0Q1mrkRHcF89tpieSmY33O/tmc54CqwA+bfhbtEfZUNLHaPUiB9X3jt1A==
+
 p-cancelable@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-2.1.1.tgz#aab7fbd416582fa32a3db49859c122487c5ed2cf"
@@ -1256,6 +1276,11 @@ parse-json@^5.0.0:
     error-ex "^1.3.1"
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
+
+parse-unit@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/parse-unit/-/parse-unit-1.0.1.tgz#7e1bb6d5bef3874c28e392526a2541170291eecf"
+  integrity sha512-hrqldJHokR3Qj88EIlV/kAyAi/G5R2+R56TBANxNMy0uPlYcttx0jnMW6Yx5KsKPSbC3KddM/7qQm3+0wEXKxg==
 
 path-parse@^1.0.7:
   version "1.0.7"
@@ -1410,6 +1435,11 @@ source-map@^0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+style-inject@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/style-inject/-/style-inject-0.3.0.tgz#d21c477affec91811cc82355832a700d22bf8dd3"
+  integrity sha512-IezA2qp+vcdlhJaVm5SOdPPTUu0FCEqfNSli2vRuSIBbu5Nq5UvygTk/VzeCqfLz2Atj3dVII5QBKGZRZ0edzw==
+
 stylis@4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.2.0.tgz#79daee0208964c8fe695a42fcffcac633a211a51"
@@ -1520,6 +1550,18 @@ vue3-loading-overlay@^0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/vue3-loading-overlay/-/vue3-loading-overlay-0.0.0.tgz#b5c726b51114019c1771479f7558af1fb1e73f6e"
   integrity sha512-Ly/sOMF+YTPDlVSsL4D8dTasT9A/PW+JlhFaY+sabOJXpafedxD1ADZbpT89XaM2QavRzfmq4s0nhcbr5I7BRQ==
+
+vue3-spinners@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/vue3-spinners/-/vue3-spinners-1.2.2.tgz#30026c44e82f56544e9766f99f3360fbc662e715"
+  integrity sha512-rWYvbwgLKQOWk92pzadYCSssYeMJdyCfdT3ZAPHwT9lOU2+jPtGvp1tr2wQHQejlLTjaF4sHIBWVq4QGuCWGDg==
+  dependencies:
+    colornames "^1.1.1"
+    just-range "^4.0.1"
+    just-zip-it "^3.0.2"
+    outdent "^0.8.0"
+    parse-unit "^1.0.1"
+    style-inject "^0.3.0"
 
 vue3-steppy@^1.2.1:
   version "1.2.1"
