@@ -16,7 +16,7 @@
             </select>
             <hr>
                 <div class="total">
-                    <h4>Total </h4><h4>$300</h4>
+                    <h4>Total </h4><h4>${{total_price}}</h4>
                 </div>
             <hr>
             <div>
@@ -28,19 +28,16 @@
             <div class="card">
                 <div>
                     <h3>Fisrt Name</h3>
-            <input v-model="input2" placeholder="First Name" required/>
+            <input v-model="first_name" placeholder="First Name" required/>
                 </div>
                 <div>
                     <h3>Last Name</h3>
-            <input v-model="input3" placeholder="Last Name" required/>
+            <input v-model="last_name" placeholder="Last Name" required/>
                 </div>
             </div>
             <h3>Country of Residence</h3>
             <input v-model="input1" placeholder="Country of Residence" required/>
-            <!-- <router-link to="/#"> -->
-
-                <vs-button>Checkout</vs-button>
-            <!-- </router-link> -->
+                <vs-button size="large" @click="handleConfirm">Confirm and pay ${{total_price}}</vs-button>
         </div>
 
     </div>
@@ -134,27 +131,21 @@
             return {
                 value: "Credit/Debit Card",
                 input1: "",
-                input2: "",
-                input3: "",
+                first_name: "",
+                last_name: "",
+                total_price: null,
             }
         },
         created(){
-            const data = JSON.parse(this.$route.query.data || '{}');
-            this.user = JSON.parse(localStorage.getItem("user"));
-            this.data1 = {
-                origin1: data.origin,
-                destination1: data.destination,
-                real_user: data.user,
-                date: data.Departure_Date,
-                time: data.Departure_time,
-                car: data.vehicle,
-                stop: data.list_of_Sightseeing,
-            }
-            console.log("Recieved:", data);
-            console.log("origin",this.data1.origin1);
-            console.log("destination",this.data1.destination1);
-            console.log("car", this.data1.car);
-            console.log('Sightprice:', data.list_of_Sightseeing);
+            this.total_price = JSON.parse(localStorage.getItem("total_price"));
         },
+        methods: {
+            handleConfirm(){
+                const user_name = {first_name: this.first_name, last_name: this.last_name};
+                localStorage.setItem("user_name", JSON.stringify(user_name));
+                console.log(localStorage.getItem("user_name"));
+                this.$router.push('/completed');
+            }
+        }
     }
 </script>

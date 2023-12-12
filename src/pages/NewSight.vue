@@ -82,12 +82,15 @@ export default {
           driver_id: 1,
         }
 
+        localStorage.setItem("data", JSON.stringify(data));
+
         console.log(data);
 
         axios.post('https://xpresspro-core.onrender.com/journeys', {payload: data})
           .then(res => {
+            localStorage.setItem("total_price", this.total_price);
             console.log(res);
-            //this.$router.push({name: 'completed', query: {data: JSON.stringify(data)}});
+            this.$router.push('/payment');
           })
           .catch(err => console.error(err));
         

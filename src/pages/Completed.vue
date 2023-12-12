@@ -11,16 +11,16 @@
         <div v-if="data1" class="info">
             <div class="text">
                 <h2>Name</h2>
-            <h1>{{ user.first_name.toUpperCase() + " " +  user.last_name.toUpperCase() }}</h1>
+            <h1>{{ user_name.first_name + " " +  user_name.last_name }}</h1>
             </div>
             <div class="text">
                 <h2>Pickup Location</h2>
-                <h1>{{ data1.origin1.toUpperCase() }}</h1>
+                <h1>{{ data1.origin1 }}</h1>
 
             </div>
             <div class="text">
                 <h2>Dropoff Location</h2>
-                <h1>{{ data1.destination1.toUpperCase() }}</h1>
+                <h1>{{ data1.destination1 }}</h1>
 
             </div>
             <div class="text">
@@ -48,7 +48,6 @@
                 <h1 v-for="stop in data1.stop">{{stop.price_per_hour }}</h1>
                 
             </div>
-            Go to <router-link to="/payment"> <strong>Payment</strong> </router-link>
         </div>
         <div v-else>
             No data
@@ -119,8 +118,6 @@
 <script>
     import NavBar from '../components/NavBar.vue';
     import Banner from '../components/Banner.vue';
-   
-
 
     export default {
         components: {
@@ -129,10 +126,11 @@
         },
        
         created(){
-            const data = JSON.parse(this.$route.query.data || '{}');
-            this.user = JSON.parse(localStorage.getItem("user"));
+            const data = JSON.parse(localStorage.getItem("data"));
+            this.user_name = JSON.parse(localStorage.getItem("user_name"));
+
             this.data1 = {
-                origin1: data.origin,
+                origin: data.origin,
                 destination1: data.destination,
                 real_user: data.user,
                 date: data.Departure_Date,
@@ -140,6 +138,7 @@
                 car: data.vehicle,
                 stop: data.list_of_Sightseeing,
             }
+
             console.log("Recieved:", data);
             console.log("origin",this.data1.origin1);
             console.log("destination",this.data1.destination1);
@@ -149,7 +148,7 @@
         data(){
             return{
                 data1: null,
-                user: null,
+                user_name: null,
             }
         }
         
