@@ -19,6 +19,7 @@ import CarsFilter from './pages/CarsFilter.vue'
 import Blog from './pages/Blog.vue'
 import CarDialog from './pages/CarDialog.vue'
 import Completed from './pages/Completed.vue'
+import Payment from './pages/Payment.vue'
 import NewSight from './pages/NewSight.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
@@ -40,6 +41,10 @@ const routes = [
   {path: '/blog', component: Blog},
   {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: false},
   {path: '/completed', name: 'completed', component: Completed},
+  {path: '/cars_filter', component: CarsFilter, meta: {requiresAuth: true}},
+  {path: '/blog', component: Blog, meta: {requiresAuth: true}},
+  {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true, meta: {requiresAuth: true}},
+  {path: '/payment', name: 'payment', component: Payment},
   {path: '/cars_filter', component: CarsFilter, meta: {requiresAuth: false}},
   {path: '/blog', component: Blog, meta: {requiresAuth: false}},
   {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true, meta: {requiresAuth: false}},

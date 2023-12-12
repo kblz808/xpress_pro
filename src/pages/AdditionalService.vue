@@ -150,7 +150,6 @@ export default {
       current: 4,
       count: 1,
       sights: JSON.parse(localStorage.getItem("sights")),
-      // selected_car: JSON.parse(localStorage.getItem("selected_car")),
       user_id: null,
       journey: JSON.parse(localStorage.getItem("journey")),
       driver: 1,
