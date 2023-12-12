@@ -7,37 +7,33 @@
           <vs-th> Car Name </vs-th>
           <vs-th> Pick Up Location </vs-th>
           <vs-th> Drop Off Location </vs-th>
-          <vs-th> Sightseeing Location </vs-th>
           <vs-th> Pick Up Date </vs-th>
           <vs-th> Price </vs-th>
           <vs-th> Status </vs-th>
         </vs-tr>
       </template>
       <template #tbody>
-        <vs-tr v-for="(order, i) in getPage(filteredOrders, page, pageSize)" :key="i" :data="order">
+        <vs-tr v-for="order of orders" :data="order">
           <vs-td>
             {{ "#" + order.id }}
           </vs-td>
           <vs-td>
-            {{ order.car_name }}
+            Mercedes
           </vs-td>
           <vs-td>
-            {{ order.pickup_location }}
+            {{ order.origin }}
           </vs-td>
           <vs-td>
-            {{ order.dropoff_location }}
+            {{ order.destination }}
           </vs-td>
           <vs-td>
-            {{ order.sightseeing }}
+            {{ order.Departure_Date }}
           </vs-td>
           <vs-td>
-            {{ order.pickup_date }}
-          </vs-td>
-          <vs-td>
-            {{ order.price }}
+            $400
           </vs-td>
           <vs-td >
-            <div :style="{ backgroundColor: getStatusColor(order.status), color: 'white', borderRadius: '5px', padding: '5px', textAlign: 'center' }">
+            <div :style="{ backgroundColor: '#B59410', color: 'white', borderRadius: '5px', padding: '5px', textAlign: 'center' }">
               {{ order.status }}
 
             </div>
@@ -49,7 +45,7 @@
           v-model:current-page="page"
           v-model:page-size="pageSize"
           :page-sizes="[5, 10, 15]"
-          :total="filteredOrders.length"
+          :total="orders.length"
         />
       </template>
     </vs-table>
@@ -57,46 +53,16 @@
 </template>
   
 <script>
-  import { ref, computed } from 'vue';
-  import { getPage } from 'vuesax-alpha';
+import { getPage } from 'vuesax-alpha';
 
-  export default {
-    props: {
-      status: {
-        type: String,
-        required: true,
-      },
-      orders: {
-        type: Array,
-        required: true,
-      },
-    },
-    setup(props) {
-      const page = ref(1);
-      const pageSize = ref(5);
-
-      const getStatusColor = (status) => {
-        const statusColors = {
-          Scheduled: '#C5A939',
-          Completed: 'limegreen',
-          Cancelled: 'red',
-        };
-        return statusColors[status] || '#ffffff';
-      };
-
-      const filteredOrders = computed(() => {
-        return props.orders.filter((order) => order.status === props.status);
-      });
-
-      return {
-        page,
-        pageSize,
-        getPage,
-        getStatusColor,
-        filteredOrders,
-      };
-    },
-  };
+export default {
+  props: ['status', 'orders'],
+  data() {
+    return {
+      
+    }
+  }
+};
 </script>
 
   
