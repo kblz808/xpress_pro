@@ -83,9 +83,9 @@ export default {
       <img :src="images[imageIndex]" />
 
       <div class="image_slide">
-        <img :src="images[0]" @click="setImageIndex(0)" :style="{'background': 'rgba(0,0,0,0.9)'}"/>
-        <img :src="images[1]" @click="setImageIndex(1)"/>
-        <img :src="images[2]" @click="setImageIndex(2)"/>
+        <img :src="images[0]" @click="setImageIndex(0)" :class="{'selected': imageIndex == 0}"/>
+        <img :src="images[1]" @click="setImageIndex(1)" :class="{'selected': imageIndex == 1}"/>
+        <img :src="images[2]" @click="setImageIndex(2)" :class="{'selected': imageIndex == 2}"/>
       </div>
     </div>
 
@@ -135,7 +135,7 @@ export default {
 
         <hr/>
 
-        <vs-button size="large" :loading="isLoading">Rent Car</vs-button>
+        <vs-button size="large" :loading="isLoading" @click="handleRent">Rent Car</vs-button>
         
       </div>
     
@@ -145,6 +145,10 @@ export default {
 </template>
 
 <style scoped>
+.selected {
+  border: 2px solid green;
+}
+
 .form {
   display: flex;
   flex-direction: column;
