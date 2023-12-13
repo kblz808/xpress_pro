@@ -137,18 +137,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    }
-    i{
-        font-size: 30px;
-    }
+  }
+  i{
+    font-size: 30px;
+  }
 
-    .text-2{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: flex-end;
-        gap: 3px;
-    }
+  .text-2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 3px;
+  }
 
 </style>
 

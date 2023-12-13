@@ -64,7 +64,7 @@ export default {
       </template>
     </vs-input>
 
-    <vs-button @click="handleSubmit" :loading="isLoading">Sign In</vs-button>
+    <vs-button @click="handleSubmit" :loading="isLoading" color="success">Sign In</vs-button>
 
     <p>Dont have an account yet? <router-link to="/register"><span>Sign up</span> here</router-link></p>
   </div>
@@ -102,7 +102,7 @@ export default {
 }
 
 span {
-  color: blue;
+  color: limegreen;
   font-weight: 600;
 }
 

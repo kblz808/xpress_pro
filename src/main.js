@@ -21,6 +21,7 @@ import CarDialog from './pages/CarDialog.vue'
 import Completed from './pages/Completed.vue'
 import Payment from './pages/Payment.vue'
 import NewSight from './pages/NewSight.vue'
+import About from './pages/About.vue'
 
 import 'vuesax-alpha/theme-chalk/index.css'
 import './index.css'
@@ -48,6 +49,7 @@ const routes = [
   {path: '/cars_filter', component: CarsFilter, meta: {requiresAuth: false}},
   {path: '/blog', component: Blog, meta: {requiresAuth: false}},
   {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true, meta: {requiresAuth: false}},
+  {path: '/about', component: About},
 ]
 
 const router = createRouter({

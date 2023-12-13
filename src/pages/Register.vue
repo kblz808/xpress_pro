@@ -78,7 +78,7 @@ export default {
       <vs-input v-model="confirm_password" placeholder="Confirm Password" input-style="border" type="password"/>
     </div>
 
-    <vs-button @click="handleRegister" :loading="isLoading">Register Now</vs-button>
+    <vs-button @click="handleRegister" :loading="isLoading" color="success">Register Now</vs-button>
   </div>
 </div>
 
@@ -117,10 +117,6 @@ export default {
   font-size: 22px;
   font-weight: 600;
 }
-
-.text p {
-}
-
 .form {
   display: flex;
   flex-direction: column;
