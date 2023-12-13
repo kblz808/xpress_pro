@@ -1,3 +1,101 @@
+<script>
+import Banner from '../components/Banner.vue'
+import NavBar from '../components/NavBar.vue'
+import FilterCarCard from '../components/FilterCarCard.vue'
+
+import {VueSpinnerOrbit} from 'vue3-spinners';
+import {VsNotification} from 'vuesax-alpha'
+
+import axios from 'axios'
+
+export default {
+  components: {
+    Banner,
+    NavBar,
+    FilterCarCard,
+    VueSpinnerOrbit,
+  },
+  data() {
+    return {
+      cars: [],
+      filtered_cars: [],
+      filter: '',
+      vehicle_type: [],
+      body_type: [],
+      car_seats: [],
+      luggage_capacity: [],
+      min_price: null,
+      max_price: null,
+      isLoading: true,
+    }
+  },
+  methods: {
+    errorNotification(){
+      VsNotification({
+        progressAuto: true,
+        icon: `<i class='bx bx-error' ></i>`,
+        position: 'top-right',
+        color: 'danger',
+        title: 'Wei\'re sorry, something went wrong.',
+        text: 'There was an error while searching for cars data. Please check your internet connection and try again. If the problem persists, contact our support team at support@xpresspor.com.',
+      })
+    },
+  },
+  mounted() {
+    axios.get('https://xpresspro-core.onrender.com/vehicles')
+      .then(res => {
+        this.isLoading = false;
+        this.cars = res.data.data;
+        this.filtered_cars = this.cars;
+      })
+      .catch(err => {
+        this.isLoading = false;
+        this.errorNotification();
+        console.error(err);
+      })
+  },
+  watch: {
+    car_seats() {
+      if(this.car_seats.length == 0){
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return this.car_seats.includes(car.person_capacity.toString());
+      })
+    },
+    luggage_capacity() {
+      if(this.luggage_capacity.length == 0) {
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return this.luggage_capacity.includes(car.luggage_capacity.toString());
+      })
+    },
+    min_price() {
+      if(!this.min_price){
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return car.price_per_day >= this.min_price;
+      })
+    },
+    max_price() {
+      if(!this.max_price){
+        this.filtered_cars = this.cars;
+        return;
+      }
+      this.filtered_cars = this.cars.filter(car => {
+        return car.price_per_day <= this.max_price;
+      })
+    }
+  }
+}
+</script>
+
+
 <template>
 <Banner/>
 
@@ -66,7 +164,11 @@
       </div>
     </div>
 
-    <div class="cars">
+    <div class="load" v-if="isLoading">
+      <VueSpinnerOrbit size="100" color="blue"/>
+    </div>
+  
+    <div class="cars" v-if="!isLoading">
       <template v-for="car in filtered_cars">
         <FilterCarCard :car=car />
       </template>
@@ -76,84 +178,15 @@
 </div>
 </template>
 
-<script>
-import Banner from '../components/Banner.vue'
-import NavBar from '../components/NavBar.vue'
-import FilterCarCard from '../components/FilterCarCard.vue'
-
-import axios from 'axios'
-
-export default {
-  components: {
-    Banner,
-    NavBar,
-    FilterCarCard,
-  },
-  data() {
-    return {
-      cars: [],
-      filtered_cars: [],
-      filter: '',
-      vehicle_type: [],
-      body_type: [],
-      car_seats: [],
-      luggage_capacity: [],
-      min_price: null,
-      max_price: null,
-    }
-  },
-  mounted() {
-    axios.get('https://xpresspro-core.onrender.com/vehicles')
-      .then(res => {
-        this.cars = res.data.data;
-        this.filtered_cars = this.cars;
-      })
-      .catch(err => {
-        console.error(err);
-      })
-  },
-  watch: {
-    car_seats() {
-      if(this.car_seats.length == 0){
-        this.filtered_cars = this.cars;
-        return;
-      }
-      this.filtered_cars = this.cars.filter(car => {
-        return this.car_seats.includes(car.person_capacity.toString());
-      })
-    },
-    luggage_capacity() {
-      if(this.luggage_capacity.length == 0) {
-        this.filtered_cars = this.cars;
-        return;
-      }
-      this.filtered_cars = this.cars.filter(car => {
-        return this.luggage_capacity.includes(car.luggage_capacity.toString());
-      })
-    },
-    min_price() {
-      if(!this.min_price){
-        this.filtered_cars = this.cars;
-        return;
-      }
-      this.filtered_cars = this.cars.filter(car => {
-        return car.price_per_day >= this.min_price;
-      })
-    },
-    max_price() {
-      if(!this.max_price){
-        this.filtered_cars = this.cars;
-        return;
-      }
-      this.filtered_cars = this.cars.filter(car => {
-        return car.price_per_day <= this.max_price;
-      })
-    }
-  }
-}
-</script>
 
 <style scoped>
+.load {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+
 .filters {
   display: flex;
   flex-direction: column;
