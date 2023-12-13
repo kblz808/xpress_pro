@@ -4,6 +4,8 @@ import NavBar from '../components/NavBar.vue'
 
 import axios from 'axios'
 
+import {germanCities} from '../data.js'
+
 export default {
   props: ["id"],
   components: {
@@ -16,10 +18,37 @@ export default {
       images: [],
       currentImage: '',
       imageIndex: 0,
+      pickup_location: "",
+      dropoff_location: "",
+      pickup_date: "",
+      time: "",
+      cities: germanCities,
+      showError: false,
+      isLoading: false,
+    }
+  },
+  watch: {
+    dropoff_location() {
+      if(this.dropoff_location == this.pickup_location){
+        this.showError = true;
+      } else {
+        this.showError = false;
+      }
+    },
+    pickup_location(){
+      if(this.dropoff_location == this.pickup_location){
+        this.showError = true;
+      } else {
+        this.showError = false;
+      }
     }
   },
   methods: {
-    handleNextImage() {
+    setImageIndex(number) {
+      this.imageIndex = number;
+    },
+    handleRent(){
+      this.isLoading = true;
     }
   },
   mounted() {
@@ -54,7 +83,7 @@ export default {
       <img :src="images[imageIndex]" />
 
       <div class="image_slide">
-        <img :src="images[0]" @click="setImageIndex(0)"/>
+        <img :src="images[0]" @click="setImageIndex(0)" :style="{'background': 'rgba(0,0,0,0.9)'}"/>
         <img :src="images[1]" @click="setImageIndex(1)"/>
         <img :src="images[2]" @click="setImageIndex(2)"/>
       </div>
@@ -84,17 +113,30 @@ export default {
 
         <div class="form">
           <h4>Pick Up Location</h4>
-          <vs-input label="pickup location"/>
+          <vs-select v-model="pickup_location" filter placeholder="Pick your pick up location">
+            <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
+            <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
+          </vs-select>
         </div>
 
         <div class="form">
           <h4>Drop Off Location</h4>
-          <vs-input label="dropoff location"/>
+          <vs-select v-model="dropoff_location" filter placeholder="Pick your drop off location">
+            <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
+            <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
+          </vs-select>
         </div>
 
         <div class="form">
           <h4>Pick Up Date & Time</h4>
+          <vs-input v-model="pickup_date" type="date"  />
+          <vs-input v-model="time" type="time" />
         </div>
+
+        <hr/>
+
+        <vs-button size="large" :loading="isLoading">Rent Car</vs-button>
+        
       </div>
     
     </div>
@@ -103,6 +145,13 @@ export default {
 </template>
 
 <style scoped>
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 0;
+}
+
 .upper {
   background-image: url('/images/2.jpg');
   display: flex;
@@ -142,6 +191,8 @@ export default {
   width: 117px;
   height: 78px;
   border-radius: 16px;
+  cursor: pointer;
+  object-fit: cover;
 }
 
 .info {
