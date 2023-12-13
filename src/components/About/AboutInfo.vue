@@ -4,9 +4,9 @@
             <div class="info-a">
                 <h3>Only Quality For Clients</h3>
                 <div class="btn">
-                    <vs-button :class="{ 'selected': selectedButton === 1}" color="success"  @click="changeText(1)">Luxury</vs-button>
-                    <vs-button :class="{ 'selected': selectedButton === 2}" color="success"  @click="changeText(2)">Comfort</vs-button>
-                    <vs-button :class="{ 'selected': selectedButton === 3}" color="success"  @click="changeText(3)">Prestige</vs-button>
+                    <vs-button :class="{ 'solid-button': selectedButton === 1, 'border-button': selectedButton !== 1 }" color="success" @click="changeText(1)">Luxury</vs-button>
+                    <vs-button :class="{ 'solid-button': selectedButton === 2, 'border-button': selectedButton !== 2 }" color="success" @click="changeText(2)">Comfort</vs-button>
+                    <vs-button :class="{ 'solid-button': selectedButton === 3, 'border-button': selectedButton !== 3 }" color="success" @click="changeText(3)">Prestige</vs-button>
                 </div>
                 <p>{{paragraphText}}</p>
             </div>
@@ -44,6 +44,16 @@
     .selected {
         background-color: #427e45;
         color: white;
+    }
+    .solid-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+    }
+    .border-button {
+        background-color: transparent;
+        border: 1px solid #4CAF50;
+        color: #4CAF50;
     }
 </style>
 
