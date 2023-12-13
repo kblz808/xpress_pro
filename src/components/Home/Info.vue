@@ -17,15 +17,15 @@
                 <h6>Completed Orders</h6>
             </div>
             <div class="box">
-                <h6 class="num">12345</h6>
+                <h6 class="num">10345</h6>
                 <h6>Happy Customers</h6>
             </div>
             <div class="box">
-                <h6 class="num">12345</h6>
+                <h6 class="num">2345</h6>
                 <h6> Vehicles Fleet</h6>
             </div>
             <div class="box">
-                <h6 class="num">12345</h6>
+                <h6 class="num">7</h6>
                 <h6>Years Experience</h6>
             </div>
         </div>

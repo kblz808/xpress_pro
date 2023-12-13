@@ -41,7 +41,7 @@ export default {
                 <router-link to="/cars_filter"><ul href="#">Cars</ul></router-link>
                 <router-link to="/journey"><ul href="#">Booking</ul></router-link>
                 <router-link to="/profile" @click="handleBooking"><ul href="#" >My Account</ul></router-link>                
-                <ul href="#">About Us <i class='bx bx-chevron-down'></i></ul>               
+                <router-link to="/about"><ul href="#">About Us </ul> </router-link>              
                 <router-link to="/blog"><ul href="#">Blog</ul> </router-link>  
             </nav>       
         <vs-button color="#1ECB15" @click="handleSignIn" v-if="!logged_in">Sign in</vs-button>

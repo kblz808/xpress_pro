@@ -18,7 +18,7 @@
                     <i class='bx bxs-phone' ></i> <a href="tel:+1123-456-7890">123-456-7890</a>
                 </div>
                 <div>
-                    <i class='bx bxs-envelope' ></i> <a href="mailto:contact@example.com">contact@example.com</a>
+                    <i class='bx bxs-envelope' ></i> <a href="mailto:contact@example.com">contact@xpresspro.com</a>
                 </div>
                 <div>
                     <i class='bx bxs-map' ></i> <a href="https://earth.google.com/web/search/germany/@51.17747204,10.44677578,216.28943878a,10945.84046503d,35y,0h,0t,0r/data=CnIaSBJCCiUweDQ3OWE3MjFlYzJiMWJlNmI6MHg3NWU4NWQ2YjhlOTFlNTViGeoe2Vw1lUlAIV-Wdmou5yRAKgdnZXJtYW55GAIgASImCiQJ-QfOwDQAIkAR705qgRD4IUAZ5Eq0SndlQ0Ahac19TzdhQ0A6AwoBMA">123 Main St, Munich, MN 10001</a>
