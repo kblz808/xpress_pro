@@ -15,7 +15,7 @@
             </div>
             <div class="text">
                 <h2>Pickup Location</h2>
-                <h1>{{ data1.origin1 }}</h1>
+                <h1>{{ data1.origin }}</h1>
 
             </div>
             <div class="text">
@@ -40,12 +40,8 @@
 
             </div>
             <div class="text">
-                <h2>Sightseeing Stops</h2>
-                <h1 v-for="stop in data1.stop">{{stop.location.toUpperCase() }}</h1>
-            </div>
-            <div class="text">
-                <h2>Sightseeing Stops Price</h2>
-                <h1 v-for="stop in data1.stop">{{stop.price_per_hour }}</h1>
+                <h2>Total Price</h2>
+                <h1>{{total_price}}</h1>
             </div>
         </div>
         <div v-else>
@@ -125,29 +121,33 @@
         },
        
         created(){
-            const data = JSON.parse(localStorage.getItem("data"));
+            const data = JSON.parse(localStorage.getItem("journey"));
+            const car = JSON.parse(localStorage.getItem("selected_car"));
+            this.total_price = JSON.parse(localStorage.getItem("total_price"));
+
             this.user_name = JSON.parse(localStorage.getItem("user_name"));
 
             this.data1 = {
-                origin: data.origin,
-                destination1: data.destination,
-                real_user: data.user,
-                date: data.Departure_Date,
-                time: data.Departure_time,
+                origin: data.pickup_location,
+                destination1: data.dropoff_location,
+                date: data.pickup_date,
+                time: data.time,
                 car: data.vehicle,
                 stop: data.list_of_Sightseeing,
             }
 
-            console.log("Recieved:", data);
-            console.log("origin",this.data1.origin1);
-            console.log("destination",this.data1.destination1);
-            console.log("car", this.data1.car);
-            console.log('Sightprice:', data.list_of_Sightseeing);
+            // localStorage.removeItem("selected_car");
+            // localStorage.removeItem("total_price");
+            // localStorage.removeItem("data");
+            // localStorage.removeItem("sights");
+            // localStorage.removeItem("user_name");
+            // localStorage.removeItem("journey");
         },
         data(){
             return{
                 data1: null,
                 user_name: null,
+                total_price: 0,
             }
         }
         

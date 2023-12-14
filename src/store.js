@@ -27,7 +27,7 @@ export const useUserStore = defineStore({
         axios.defaults.headers.common['Authorization'] = `
           Bearer ${token}
         `
-
+        
         return true;
       } catch (error) {
         console.error(error);

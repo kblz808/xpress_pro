@@ -143,7 +143,6 @@
             handleConfirm(){
                 const user_name = {first_name: this.first_name, last_name: this.last_name};
                 localStorage.setItem("user_name", JSON.stringify(user_name));
-                console.log(localStorage.getItem("user_name"));
                 this.$router.push('/completed');
             }
         }

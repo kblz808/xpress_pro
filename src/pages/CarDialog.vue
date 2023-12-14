@@ -68,7 +68,6 @@ export default {
         return;
       } else {
         const journey = {
-          car_picked: this.car_picked,
           pickup_location: this.pickup_location,
           dropoff_location: this.dropoff_location,
           pickup_date: this.pickup_date,
