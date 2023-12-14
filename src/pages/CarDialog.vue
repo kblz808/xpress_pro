@@ -25,10 +25,12 @@ export default {
       cities: germanCities,
       showError: false,
       isLoading: false,
+      emptyError: [false, false, false, false],
     }
   },
   watch: {
     dropoff_location() {
+      this.emptyError[1] = false;
       if(this.dropoff_location == this.pickup_location){
         this.showError = true;
       } else {
@@ -36,11 +38,18 @@ export default {
       }
     },
     pickup_location(){
+      this.emptyError[0] = true;
       if(this.dropoff_location == this.pickup_location){
         this.showError = true;
       } else {
         this.showError = false;
       }
+    },
+    pickup_date(){
+      this.emptyError[2] = false;
+    },
+    time(){
+      this.emptyError[3] = false;
     }
   },
   methods: {
@@ -49,6 +58,26 @@ export default {
     },
     handleRent(){
       this.isLoading = true;
+      this.emptyError[0] = !this.pickup_location;
+      this.emptyError[1] = !this.dropoff_location;
+      this.emptyError[2] = !this.pickup_date;
+      this.emptyError[3] = !this.time;
+
+      if(this.emptyError.includes(true)){
+        return;
+      } else {
+        const journey = {
+          car_picked: this.car_picked,
+          pickup_location: this.pickup_location,
+          dropoff_location: this.dropoff_location,
+          pickup_date: this.pickup_date,
+          time: this.time,
+        };
+        localStorage.setItem("journey", JSON.stringify(journey));
+        localStorage.setItem("selected_car", JSON.stringify(this.car));
+
+        this.$router.push({name: 'sight', params: {step: 2}});
+      }
     }
   },
   mounted() {

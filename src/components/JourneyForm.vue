@@ -195,7 +195,7 @@ export default {
         };
         localStorage.setItem("journey", JSON.stringify(journey));
       
-        this.$router.push('/sight');
+        this.$router.push({name: 'sight', params: {step: 1}});
       }
     }
   },
