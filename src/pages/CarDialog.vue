@@ -25,10 +25,12 @@ export default {
       cities: germanCities,
       showError: false,
       isLoading: false,
+      emptyError: [false, false, false, false],
     }
   },
   watch: {
     dropoff_location() {
+      this.emptyError[1] = false;
       if(this.dropoff_location == this.pickup_location){
         this.showError = true;
       } else {
@@ -36,11 +38,18 @@ export default {
       }
     },
     pickup_location(){
+      this.emptyError[0] = false;
       if(this.dropoff_location == this.pickup_location){
         this.showError = true;
       } else {
         this.showError = false;
       }
+    },
+    pickup_date(){
+      this.emptyError[2] = false;
+    },
+    time(){
+      this.emptyError[3] = false;
     }
   },
   methods: {
@@ -49,6 +58,28 @@ export default {
     },
     handleRent(){
       this.isLoading = true;
+      this.emptyError[0] = !this.pickup_location;
+      this.emptyError[1] = !this.dropoff_location;
+      this.emptyError[2] = !this.pickup_date;
+      this.emptyError[3] = !this.time;
+
+      if(this.emptyError.includes(true)){
+        this.isLoading = false;
+        return;
+      } else {
+        const journey = {
+          pickup_location: this.pickup_location,
+          dropoff_location: this.dropoff_location,
+          pickup_date: this.pickup_date,
+          time: this.time,
+        };
+        localStorage.setItem("journey", JSON.stringify(journey));
+        localStorage.setItem("selected_car", JSON.stringify(this.car));
+
+        this.isLoading = false;
+
+        this.$router.push({name: 'sight', params: {step: 2}});
+      }
     }
   },
   mounted() {
@@ -115,6 +146,7 @@ export default {
           <h4>Pick Up Location</h4>
           <vs-select v-model="pickup_location" filter placeholder="Pick your pick up location">
             <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
+            <template #message-danger v-if="emptyError[0]"> Field cannot be empty </template>
             <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
           </vs-select>
         </div>
@@ -123,14 +155,20 @@ export default {
           <h4>Drop Off Location</h4>
           <vs-select v-model="dropoff_location" filter placeholder="Pick your drop off location">
             <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
+            <template #message-danger v-if="emptyError[1]"> Field cannot be empty </template>
             <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
           </vs-select>
         </div>
 
         <div class="form">
           <h4>Pick Up Date & Time</h4>
-          <vs-input v-model="pickup_date" type="date"  />
-          <vs-input v-model="time" type="time" />
+          <vs-input v-model="pickup_date" type="date">
+            <template #message-danger v-if="emptyError[2]"> Field cannot be empty </template>
+          </vs-input>
+          
+          <vs-input v-model="time" type="time">
+            <template #message-danger v-if="emptyError[3]"> Field cannot be empty </template>
+          </vs-input>
         </div>
 
         <hr/>

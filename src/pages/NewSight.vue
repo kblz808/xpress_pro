@@ -14,6 +14,7 @@ import {germanCities} from '../data.js'
 import axios from 'axios';
 
 export default {
+  props: ['step'],
   components: {
     Banner,
     NavBar,
@@ -22,7 +23,22 @@ export default {
     NewCarCard,
     VueSpinnerOrbit,
   },
-
+  watch: {
+    pickup_location() {
+      if(this.pickup_location == this.dropoff_location) {
+        this.showError = true;
+      } else {
+        this.showError = false;
+      }
+    },
+    dropoff_location(){
+      if(this.pickup_location == this.dropoff_location) {
+        this.showError = true;
+      } else {
+        this.showError = false;
+      }
+    }
+  },
   data() {
     return {
       cities: germanCities,
@@ -52,26 +68,35 @@ export default {
       isLoading: false,
 
       show_text: 'Select Your Preferred Vehicle',
+
+      showError: false,
+
+      isPayLoading: false,
     }
   },
   mounted() {
+    this.isLoading = true;
+
     const journey = JSON.parse(localStorage.getItem("journey"));
     this.pickup_location = journey.pickup_location;
     this.dropoff_location = journey.dropoff_location;
     this.pickup_date = journey.pickup_date;
     this.time = journey.time;
 
-    this.isLoading = true;
+    if(this.step == 2){
+      let car = JSON.parse(localStorage.getItem("selected_car"));
+      this.handleCarSelected(car);
+    } else {
+      axios.get('https://xpresspro-core.onrender.com/vehicles')
+        .then(res => {
+          this.cars= res.data.data;
+          this.isLoading = false;
+        })
+        .catch(err => {
+          console.error(err);
+        })
+    }
 
-    axios.get('https://xpresspro-core.onrender.com/vehicles')
-      .then(res => {
-        this.cars= res.data.data;
-        this.isLoading = false;
-      })
-      .catch(err => {
-        console.error(err);
-      })
-    
     axios.get('https://xpresspro-core.onrender.com/sightseeings')
       .then(res => {
         this.sights = res.data.data;
@@ -98,7 +123,7 @@ export default {
     },
     handleAdditional(){
       if(this.show_additional){
-        this.isLoading = true;
+        this.isPayLoading = true;
         const data = {
           origin: this.pickup_location,
           destination: this.dropoff_location,
@@ -130,7 +155,7 @@ export default {
           .catch(err => {
             this.errorNotification();
             console.error(err);
-            this.isLoading = false;
+            this.isPayLoading = false;
           });
         
       } else {
@@ -140,17 +165,21 @@ export default {
       }
     },
     handleCarSelected(car) {
-      this.isLoading = true;
-      this.selected_car = car;
-      this.total_price = car.price_per_day;
-      this.show_cars = false;
-      this.current = 2;
-      this.show_sights = true;
-      this.car_selected = true;
-      this.show_text = "Visit these sights along the way";
+      if(this.showError){
+        return;
+      } else {
+        this.isLoading = true;
+        this.selected_car = car;
+        this.total_price = car.price_per_day;
+        this.show_cars = false;
+        this.current = 2;
+        this.show_sights = true;
+        this.car_selected = true;
+        this.show_text = "Visit these sights along the way";
 
-      console.log(this.selected_car);
-      this.isLoading = false;
+        console.log(this.selected_car);
+        this.isLoading = false;
+      }
     },
     handleSightSelected(sight, selected) {
       if(selected){
@@ -291,7 +320,7 @@ export default {
     <hr/>
 
     <template v-if="car_selected">
-      <vs-button @click="handleAdditional" size="large">Book your trip for ${{total_price}}</vs-button>
+      <vs-button @click="handleAdditional" size="large" :loading="isPayLoading">Book your trip for ${{total_price}}</vs-button>
     </template>
     
   </div>

@@ -10,7 +10,6 @@ import Profile from './pages/Profile.vue'
 import MyOrders from './pages/MyOrders.vue'
 import MyFavorite from './pages/MyFavorite.vue'
 import Journey from './pages/Journey.vue'
-import Sight from './pages/Sight.vue'
 import Cars from './pages/Cars.vue'
 import AdditionalService from './pages/AdditionalService.vue'
 import Register from './pages/Register.vue'
@@ -33,18 +32,15 @@ const routes = [
   {path: '/myorders', component: MyOrders, meta: {requiresAuth: false}},
   {path: '/myfavorite', component: MyFavorite, meta: {requiresAuth: false}},
   {path: '/journey', component: Journey, meta: {requiresAuth: false}},
-  {path: '/sight', component: NewSight, meta: {requiresAuth: false}},
+  {path: '/sight/:step', name: 'sight', props: true, component: NewSight, meta: {requiresAuth: false}},
   {path: '/cars', component: Cars, meta: {requiresAuth: false}},
   {path: '/additional', component: AdditionalService, meta: {requiresAuth: false}},
   {path: '/register', component: Register},
   {path: '/login', component: Login},
   {path: '/cars_filter', component: CarsFilter},
   {path: '/blog', component: Blog},
-  {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: false},
   {path: '/completed', name: 'completed', component: Completed},
   {path: '/cars_filter', component: CarsFilter, meta: {requiresAuth: true}},
-  {path: '/blog', component: Blog, meta: {requiresAuth: true}},
-  {path: '/car_dialog/:id', name: 'car', component: CarDialog, props: true, meta: {requiresAuth: true}},
   {path: '/payment', component: Payment},
   {path: '/cars_filter', component: CarsFilter, meta: {requiresAuth: false}},
   {path: '/blog', component: Blog, meta: {requiresAuth: false}},
