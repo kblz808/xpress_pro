@@ -171,7 +171,6 @@ export default {
     time() {
       this.emptyError[3] = false;
     }
-    
   },
   methods: {
     carClicked(carName) {

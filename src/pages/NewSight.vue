@@ -320,7 +320,7 @@ export default {
     <hr/>
 
     <template v-if="car_selected">
-      <vs-button @click="handleAdditional" size="large">Book your trip for ${{total_price}}</vs-button>
+      <vs-button @click="handleAdditional" size="large" :loading="isPayLoading">Book your trip for ${{total_price}}</vs-button>
     </template>
     
   </div>
