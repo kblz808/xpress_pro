@@ -4,22 +4,22 @@
         <div class="left">
           <h3>What is your vehicle type?</h3>
           <div class="car_types">
-            <div class="logo" :style="{'background': car_clicked == 'car' ? 'yellow' : 'green'}" @click="carClicked('car')">
+            <div class="logo" :style="{'background': car_clicked == 'car' ? 'lime' : 'green'}" @click="carClicked('car')">
               <img src="/images/car.png">
               Car
             </div>
 
-            <div class="logo" :style="{'background': car_clicked == 'van' ? 'yellow' : 'green'}" @click="carClicked('van')">
+            <div class="logo" :style="{'background': car_clicked == 'van' ? 'lime' : 'green'}" @click="carClicked('van')">
               <img src="/images/van.png">
               Van
             </div>
 
-            <div class="logo" :style="{'background': car_clicked == 'minibus' ? 'yellow' : 'green'}" @click="carClicked('minibus')">
+            <div class="logo" :style="{'background': car_clicked == 'minibus' ? 'lime' : 'green'}" @click="carClicked('minibus')">
               <img src="/images/minibus.png">
               Minibus
             </div>
 
-            <div class="logo" :style="{'background': car_clicked == 'sports' ? 'yellow' : 'green'}" @click="carClicked('sports')">
+            <div class="logo" :style="{'background': car_clicked == 'sports' ? 'lime' : 'green'}" @click="carClicked('sports')">
               <img src="/images/sportscar.png">
               Prestige
             </div>

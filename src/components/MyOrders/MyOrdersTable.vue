@@ -42,6 +42,7 @@
       </template>
       <template #footer>
         <vs-pagination
+        color="success"
           v-model:current-page="page"
           v-model:page-size="pageSize"
           :page-sizes="[5, 10, 15]"

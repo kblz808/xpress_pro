@@ -7,11 +7,11 @@ export default {
       if(this.clicked) {
         this.$emit('card_clicked', this.sight, true);
         this.clicked = false;
-        this.color = 'primary';
+        this.color = 'success';
       } else {
         this.$emit('card_clicked', this.sight, false);
         this.clicked = true;
-        this.color = 'warn';
+        this.color = 'danger';
       }
     },
     minus() {
@@ -32,7 +32,7 @@ export default {
       clicked: false,
       stop_minutes: 30,
       price: 20,
-      color: 'primary',
+      color: 'success',
     }
   }
 }
@@ -48,9 +48,9 @@ export default {
 
   <div class="add">
     <div class="buttons">
-      <vs-button icon @click="minus"><i class='bx bx-minus'></i></vs-button>
+      <vs-button icon @click="minus" color="success"><i class='bx bx-minus'></i></vs-button>
       <h4>{{stop_minutes}} min stop</h4>
-      <vs-button icon @click="add"><i class='bx bx-plus'></i></vs-button>
+      <vs-button icon @click="add" color="success"><i class='bx bx-plus'></i></vs-button>
     </div>
     <vs-button :active="clicked" @click="emitClicked(sight.id)" size='large' :color="color"><template v-if="!clicked">Add for<strong>${{price}}</strong></template> <template v-if="clicked">Cancel</template></vs-button>
   </div>
