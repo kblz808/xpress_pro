@@ -45,6 +45,7 @@
       </template>
       <template #footer>
         <vs-pagination
+        color="success"
           v-model:current-page="page"
           v-model:page-size="pageSize"
           :page-sizes="[3, 5, 7]"
@@ -63,6 +64,10 @@
   const page = ref(1);
   const pageSize = ref(5);
   const order = ref(ordersData);
+
+ 
+
+
   
   const getStatusColor = (status) => {
     const statusColors = {
@@ -73,10 +78,10 @@
     return statusColors[status] || '#ffffff';
   };
   
-  // Use a computed property to handle the filtered orders
   const filteredOrders = computed(() => {
     return order.value.filter((o) => o.status === o.status);
   });
+  
 </script>
   
 <style scoped>

@@ -42,7 +42,7 @@
           <h2>${{car.price_per_day}}</h2>
         </div>
 
-        <vs-button @click="carSelected" type="flat" :active="selected">Rent Now</vs-button>
+        <vs-button @click="carSelected" type="flat" color="success" :active="selected">Rent Now</vs-button>
       </div>
     </div>
   </div>

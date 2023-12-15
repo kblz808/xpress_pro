@@ -22,7 +22,6 @@
             <div>
                 <h3>Card Number</h3>
                 <input v-model="input1" placeholder="Card Number" required/>
-                <!-- <img src="/images/cards2.png" alt=""> -->
                 <img src="/images/cards4.png" alt="">
             </div>
             <div class="card">
@@ -36,7 +35,7 @@
                 </div>
             </div>
             <h3>Country of Residence</h3>
-            <input v-model="input1" placeholder="Country of Residence" required/>
+            <input v-model="input2" placeholder="Country of Residence" required/>
                 <vs-button size="large" @click="handleConfirm">Confirm and pay ${{total_price}}</vs-button>
         </div>
 
@@ -131,6 +130,7 @@
             return {
                 value: "Credit/Debit Card",
                 input1: "",
+                input2: "",
                 first_name: "",
                 last_name: "",
                 total_price: null,

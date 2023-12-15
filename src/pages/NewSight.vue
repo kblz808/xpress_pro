@@ -230,7 +230,7 @@ export default {
     <h2>{{show_text}}</h2>
 
     <div class="load" v-if="isLoading">
-      <VueSpinnerOrbit size="100" color="blue"/>
+      <VueSpinnerOrbit size="100" color="lime"/>
     </div>
     
     <template v-for="sight in sights" v-if="show_sights">
@@ -250,9 +250,9 @@ export default {
         </div>
 
         <div class="seat_tools">
-          <vs-button @click="minusSeat" icon><i class='bx bx-minus'></i></vs-button>
+          <vs-button @click="minusSeat" color="success" icon><i class='bx bx-minus'></i></vs-button>
           <div class="count">{{seat_count}}</div>
-          <vs-button @click="addSeat" icon><i class='bx bx-plus'></i></vs-button>
+          <vs-button @click="addSeat" color="success" icon><i class='bx bx-plus'></i></vs-button>
         </div>
 
         <p>number of child seat</p>
@@ -271,7 +271,7 @@ export default {
           <vs-option v-for="city in cities" :label="city" :value="city"> {{city}} </vs-option>
         </vs-select>
 
-        <vs-button icon @click="handleSwitch"><i class='bx bx-transfer-alt'></i></vs-button>
+        <vs-button icon @click="handleSwitch" color="success"><i class='bx bx-transfer-alt'></i></vs-button>
 
         <vs-select v-model="dropoff_location" filter placeholder="Pick your drop off location">
           <template #message-danger v-if="showError"> Pickup and Dropoff locations cannot be the same </template>
@@ -320,7 +320,7 @@ export default {
     <hr/>
 
     <template v-if="car_selected">
-      <vs-button @click="handleAdditional" size="large" :loading="isPayLoading">Book your trip for ${{total_price}}</vs-button>
+      <vs-button @click="handleAdditional" size="large" color="success" :loading="isPayLoading">Book your trip for ${{total_price}}</vs-button>
     </template>
     
   </div>

@@ -173,7 +173,7 @@ export default {
 
         <hr/>
 
-        <vs-button size="large" :loading="isLoading" @click="handleRent">Rent Car</vs-button>
+        <vs-button size="large" color="success" :loading="isLoading" @click="handleRent">Rent Car</vs-button>
         
       </div>
     

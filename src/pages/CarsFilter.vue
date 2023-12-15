@@ -165,7 +165,7 @@ export default {
     </div>
 
     <div class="load" v-if="isLoading">
-      <VueSpinnerOrbit size="100" color="blue"/>
+      <VueSpinnerOrbit size="100" color="lime"/>
     </div>
   
     <div class="cars" v-if="!isLoading">

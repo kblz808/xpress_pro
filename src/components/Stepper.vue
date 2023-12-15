@@ -79,7 +79,7 @@ export default {
 }
 
 .active {
-  background: green;
+  background: limegreen;
   color: white;
 }
 
