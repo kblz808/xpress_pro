@@ -7,10 +7,9 @@
         <h1 class="title">What a clients say</h1>
         <p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
         <div class="blogs">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
+            <BlogCard  />
+            <!-- v-for="(testimonial, index) in testimonials" :key="index" :testimonial="testimonial" -->
+            
             
         </div>
         <div>
@@ -69,6 +68,7 @@
     import Footer from '../Footer.vue';
     import BlogCard from './BlogCard.vue';
     import BlogForm from './BlogForm.vue';
+    import axios from 'axios';
 
     export default {
         components: {
@@ -76,6 +76,21 @@
             Footer,
             BlogCard,
             BlogForm,
-        }
+        },
+        data() {
+    return {
+      testimonials: [] // Assuming you'll receive an array of testimonials
+    };
+  },
+  created() {
+    // Make an axios GET request to fetch testimonials from the backend
+    axios.get('your_backend_endpoint')
+      .then(response => {
+        this.testimonials = response.data;
+      })
+      .catch(error => {
+        console.error('Error fetching testimonials:', error);
+      });
+  }
     }
 </script>

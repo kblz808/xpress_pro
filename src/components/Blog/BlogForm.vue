@@ -1,50 +1,62 @@
 <template>
     <form @submit.prevent="submitTestimonial">
       <label for="rating">Rating:</label>
-      <select v-model="testimonialData.rating" id="rating" name="rating">
-        <option value="5">5 stars</option>
-        <option value="4">4 stars</option>
-        <option value="3">3 stars</option>
-        <option value="2">2 stars</option>
-        <option value="1">1 star</option>
-      </select>
+     
+      <Stars :initialRating="testimonialData.userRating" required @rated="updateRating"></Stars>
   
       <label for="testimonial">Testimonial:</label>
       <textarea v-model="testimonialData.testimonial" id="testimonial" name="testimonial" required></textarea>
-  
   
       <button type="submit">Submit Testimonial</button>
     </form>
   </template>
   
   <script>
+  import Stars from './Stars.vue';
+  import axios from 'axios';
   export default {
+    components: {
+      Stars,
+    },
     data() {
       return {
         testimonialData: {
           rating: '5',
           testimonial: '',
+          userRating: 0
         },
       };
     },
     methods: {
-      submitTestimonial() {
-
-        // Handle form submission, e.g., send data to the server
-        console.log('Testimonial submitted:', this.testimonialData);
-  
-        // Optionally, you can reset the form after submission
-        this.resetForm();
+      updateRating(rating) {
+        this.testimonialData.userRating = rating;
       },
+      // async submitTestimonial() {
+      //   console.log('Testimonial submitted:', this.testimonialData);
+      //   this.resetForm();
+      // },
+      async submitTestimonial() {
+      try {
+        const response = await axios.post('your_backend_endpoint', this.testimonialData);
+        console.log('Testimonial submitted:', response.data);
+
+        // Reset the form after submission if needed
+        this.resetForm();
+      } catch (error) {
+        console.error('Error submitting testimonial:', error);
+      }
+    },
       resetForm() {
         this.testimonialData = {
           rating: '5',
           testimonial: '',
+          userRating: 0
         };
       },
     },
   };
   </script>
+  
   
   <style scoped>
 form{

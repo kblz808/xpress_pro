@@ -1,6 +1,7 @@
-<template>
+<!-- <template>
     <div class="container">
-        <img src="/images/girl.jpg" alt="">
+        <img src="/images/girl.jpg"         <img src="/images/girl.jpg" alt="">
+alt="">
         <p><strong>"</strong> Sed ut perspiciatis unde omnis iste natus error sit
              voluptatem accusantium doloremque laudantium, 
              totam rem aperiam, eaque ipsa quae ab illo inventore 
@@ -44,4 +45,57 @@
 
 <script>
 
-</script>
+</script> -->
+
+<template>
+    <div class="container">
+        <!-- <img src="/images/girl.jpg" alt=""> -->
+      <!-- <img :src="testimonial.image" alt=""> -->
+      <p><strong>"</strong>{{ testimonial.testimonial }}<strong>"</strong></p>
+      <strong>{{ testimonial.name }}</strong>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    props: {
+      testimonial: {
+        type: Object,
+        required: true
+      }
+    }
+  };
+  </script>
+  
+  <style scoped>
+  .container {
+    width: 500px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  img {
+    border-radius: 50%;
+    border: 5px solid limegreen;
+    width: 180px;
+    height: 200px;
+  }
+  
+  p {
+    color: gray;
+  }
+  
+  strong {
+    color: limegreen;
+    font-size: 30px;
+    font-weight: 900;
+  }
+  </style>
+  
