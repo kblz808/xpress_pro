@@ -7,13 +7,13 @@
         <h1 class="title">What a clients say</h1>
         <p class="description">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
         <div class="blogs">
-            <BlogCard  />
-            <!-- v-for="(testimonial, index) in testimonials" :key="index" :testimonial="testimonial" -->
+            <BlogCard  v-for="(testimonial, index) in testimonials" :key="index" :testimonial="testimonial"
+ />
             
             
         </div>
         <div>
-            <BlogForm />
+            <BlogForm @testimonialSubmitted="updateTestimonials"/>
 
         </div>
     </div>
@@ -79,18 +79,25 @@
         },
         data() {
     return {
-      testimonials: [] // Assuming you'll receive an array of testimonials
+      testimonials: [] 
     };
   },
-  created() {
-    // Make an axios GET request to fetch testimonials from the backend
-    axios.get('your_backend_endpoint')
-      .then(response => {
-        this.testimonials = response.data;
-      })
-      .catch(error => {
+  methods: {
+    async updateTestimonials(newTestimonial) {
+      this.testimonials.push(newTestimonial);
+    },
+    async fetchTestimonials() {
+      try {
+        const response = await axios.get('https://xpresspro-core.onrender.com/blogs/');
+        console.log('Testimonials fetched:', response.data.data);
+        this.testimonials = response.data.data;
+      } catch (error) {
         console.error('Error fetching testimonials:', error);
-      });
+      }
+    }
+  },
+  created() {
+    this.fetchTestimonials();
   }
     }
 </script>
