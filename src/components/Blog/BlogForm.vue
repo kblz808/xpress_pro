@@ -6,7 +6,7 @@
     <label for="testimonial">Testimonial:</label>
     <textarea v-model="comment" id="testimonial" name="testimonial" required></textarea>
 
-    <button type="submit">Submit Testimonial</button>
+    <button type="submit" @click="handleBooking">Submit Testimonial</button>
   </form>
 </template>
   
@@ -28,6 +28,13 @@
     methods: {
       updateRating(stars) {
         this.stars = stars;
+      },
+      handleBooking() {
+        if(localStorage.getItem('token')) {
+            this.$router.push('/blog');
+        } else {
+            this.$router.push('/login');
+        }
       },
       async submitTestimonial() {
         const testimonialData = {

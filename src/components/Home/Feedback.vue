@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="feedback-1">
-            <div><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i></div>
+            <div><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i></div>
             <h3>Excellent Service! Car Rent Service!</h3>
             <p class="text">I have been using Rentaly for my Car Rental <br/>
                 needs for over 5 years now. I have never had<br/> 
@@ -13,7 +13,7 @@
             <p class="name">- Stepanie Hutchkiss</p>
         </div>
         <div class="feedback-2">
-            <div><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i></div>
+            <div><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i></div>
             <h3>Excellent Service! Car Rent Service!</h3>
             <p class="text">We have been using Rentaly for our trips  <br/>
                 needs for several years now and have always <br/> 
@@ -26,7 +26,7 @@
             <p class="name">- Jovan Reels</p>
         </div>
         <div class="feedback-3">
-            <div><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i></div>
+            <div><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i><i class='bx bxs-star' ></i></div>
             <h3>Excellent Service! Car Rent Service!</h3>
             <p class="text">Endorsed by industry experts, Rentaly is the<br/> 
                 Car Rental solution you can trust. With years  

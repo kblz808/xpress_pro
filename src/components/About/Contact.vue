@@ -1,15 +1,15 @@
 <template>
     <div class="contact">
-            <h3>Call us for further information. XPressPro customer care is here to help you anytime.</h3>
-            <div class="contact-1">
-                <div class="box">
-                    <i class='bx bxs-phone'></i>
-                    <h2>Call Us Now</h2>
-                    <h1>+49 200 333 800</h1>
-                </div>
-                <vs-button color="#1ecb15">Contact Us</vs-button>
+        <h3>Call us for further information. XPressPro customer care is here to help you anytime.</h3>
+        <div class="contact-1">
+            <div class="box">
+                <i class='bx bxs-phone'></i>
+                <h2>Call Us Now</h2>
+                <h1>+49 200 333 800</h1>
             </div>
+            <vs-button color="#1ecb15" :onclick="makePhoneCall">Contact Us</vs-button>
         </div>
+    </div>
 </template>
 
 <style scoped>
@@ -45,3 +45,13 @@
         font-weight: 800;
     }
 </style>
+
+<script>
+    export default {
+        methods: {
+            makePhoneCall() {
+            window.open('tel:+49 200 333 800');
+            },
+        },
+    };
+</script>

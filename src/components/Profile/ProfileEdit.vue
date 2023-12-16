@@ -45,7 +45,7 @@
 
                 <div>
                     <h6>Hours</h6>
-                    <p>Select your preferred language</p>
+                    <p>Select your time format</p>
                     <vs-select style="width: 350px;" v-model="hour" placeholder="Select">
                         <vs-option label="24 hr" value="1"> 24 hr </vs-option>
                         <vs-option label="12 hr" value="2"> 12 hr </vs-option>

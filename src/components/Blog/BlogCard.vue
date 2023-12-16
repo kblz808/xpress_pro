@@ -10,6 +10,7 @@
   </template>
   
   <script>
+  import axios from 'axios';
   export default {
     props: {
       testimonial: {
@@ -24,7 +25,13 @@
         const emptyStars = totalStars - filledStars;
         return Array(filledStars).fill(true).concat(Array(emptyStars).fill(false));
       }
-    }
+    },
+    // async mounted() {
+      
+    //     const usrrsep = await axios.get(`https://xpresspro-core.onrender.com/users/${this.testimonial.user_id}`);
+    //     console.log( "Userdata:", usrrsep);
+    //     this.usrrsep = usrrsep;
+    // }
   };
   </script>
   
