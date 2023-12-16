@@ -6,6 +6,7 @@
       <div class="stars">
         <i v-for="(star, index) in starIcons" :key="index" class="bx" :class="[star ? 'bxs-star' : 'bx-star']"></i>
       </div>
+      <!-- <vs-button color="danger"><i class='bx bxs-trash-alt'></i></vs-button> -->
     </div>
   </template>
   
@@ -70,6 +71,9 @@
   }
   .bx-star{
     color: black;
+  }
+  i{
+    font-size: 20px;
   }
   </style>
   
