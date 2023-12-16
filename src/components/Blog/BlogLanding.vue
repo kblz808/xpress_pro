@@ -75,12 +75,15 @@
     },
     data() {
       return {
-        testimonials: [] 
+        testimonials: [],
+        isLoading: false, 
       };
     },
     methods: {
       async updateTestimonials(newTestimonial) {
+        this.isLoading = true;
         this.testimonials.push(newTestimonial);
+        this.isLoading = false;
       },
       async fetchTestimonials() {
         try {

@@ -6,7 +6,7 @@
     <label for="testimonial">Testimonial:</label>
     <textarea v-model="comment" id="testimonial" name="testimonial" required></textarea>
 
-    <button type="submit" @click="handleBooking">Submit Testimonial</button>
+    <vs-button @click="handleBooking" color="success" size="large" :loading="isLoading"> Submit Testimonial</vs-button>
   </form>
 </template>
   
@@ -22,7 +22,7 @@
       return {
         stars: 0,
         comment: '',
-
+        isLoading: false,
       };
     },
     methods: {
@@ -37,6 +37,7 @@
         }
       },
       async submitTestimonial() {
+        this.isLoading = true;
         const testimonialData = {
           comment: this.comment,
           stars: this.stars,
@@ -47,6 +48,7 @@
           console.log('Testimonial submitted:', response.data);
   
           this.resetForm();
+          this.$router.go();
         } catch (error) {
           console.error('Error submitting testimonial:', error);
         }
