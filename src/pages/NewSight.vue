@@ -263,7 +263,7 @@ export default {
   <div class="right">
 
     <div class="top">
-      <h2 class="title">Route</h2>
+      <h2 class="title">Itinerary</h2>
 
       <div class="locations">
         <vs-select v-model="pickup_location" filter placeholder="Pick your pick up location">
